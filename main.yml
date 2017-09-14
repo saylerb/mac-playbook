@@ -1,7 +1,22 @@
 ---
 - hosts: local
+  vars: 
+    name:  "{{ lookup('env', 'NAME') }}"
+    email: "{{ lookup('env', 'EMAIL') }}"
 
   tasks:
-  - name: test ansible
-    debug:
-      msg: "Hello, World"
+  - name: generate an shh key
+    command: ssh-keygen -t rsa -b 4096 -C {{ email }} -N "" -f ~/.ssh/id_rsa
+    args:
+      creates: ~/.ssh/id_rsa 
+
+  - name: getup global git config
+    git_config:
+      name: user.name
+      scope: global
+      value: "{{ name }}"
+  
+  - name: list out global git config
+    git_config:
+      list_all: yes
+      scope: global
