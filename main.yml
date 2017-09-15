@@ -4,13 +4,16 @@
     name:  "{{ lookup('env', 'NAME') }}"
     email: "{{ lookup('env', 'EMAIL') }}"
     github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
-    public_key: "{{ lookup('env', 'PUBLIC_KEY') }}"
 
   tasks:
   - name: generate an shh key
     command: ssh-keygen -t rsa -b 4096 -C {{ email }} -N "" -f ~/.ssh/id_rsa
     args:
       creates: ~/.ssh/id_rsa 
+
+  - name: save public key to variable
+    set_fact:
+      public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
   - name: getup global git config
     git_config:
@@ -27,5 +30,5 @@
     shell: |
       curl -H "Content-Type: application/json"\
            -H "Authorization: token $GITHUB_API_TOKEN"\
-           --data '{"title":"mac-ansible-token", "key":"'"$PUBLIC_KEY"'"}'\
+           --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
