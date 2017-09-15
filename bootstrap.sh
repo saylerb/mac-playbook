@@ -1,7 +1,5 @@
 # !/usr/bin/env bash
 
-# sudo pip install --upgrade -r requirements.txt
-
 # Install Command Line Tools without GUI prompt, required for pip to install ansible
 
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
@@ -22,7 +20,6 @@ fi
 
 sudo pip install --upgrade
 sudo pip install ansible
-
 
 # Avoid prompt to continue by redirecting stdin from /dev/null
 if [ ! `which brew` ]
