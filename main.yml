@@ -3,6 +3,7 @@
   vars: 
     name:  "{{ lookup('env', 'NAME') }}"
     email: "{{ lookup('env', 'EMAIL') }}"
+    github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
 
   tasks:
   - name: generate an shh key
