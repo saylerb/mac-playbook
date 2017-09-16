@@ -34,4 +34,13 @@
            --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
 
+  - name: make sure zsh version is greater than 4.3.9
+    shell: zsh --version | cut -d ' ' -f2
+    register: result
+    changed_when: "false"
+
+  - assert:
+      that: result | version_compare ('4.3.9', '>=')
+      msg: "zsh must be greater or equal to 4.3.9"
+
   - include: brew.yml
