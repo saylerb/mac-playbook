@@ -1,3 +1,5 @@
 ---
   - name: update homebrew
     command: "brew update"
+    register: result
+    changed_when: "result.stdout != 'Already up-to-date.'"
