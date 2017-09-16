@@ -32,3 +32,5 @@
            -H "Authorization: token $GITHUB_API_TOKEN"\
            --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
+
+  - include: brew.yml
