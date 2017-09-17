@@ -37,3 +37,4 @@ ansible-playbook main.yml -i hosts.ini -v
 * Add ssh-key to ssh-agent
 * Use uri module instead of curl for github key
 * automate changing of default shell to zsh
+* check if zshrc back is actually working as intended

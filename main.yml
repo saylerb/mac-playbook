@@ -53,4 +53,38 @@
   - assert:
       that: result.stdout == "/bin/zsh"
 
+  - name: backing up existing ~/.zshrc if it exists
+    shell: if [ -f ~/.zshrc ]; then mv ~/.zshrc{,.orig}; fi
+
+  #- name: check if ~/.zshrc exists
+  #  stat:
+  #    path: ~/.zshrc
+  #  register: stat_result
+
+  #- debug:
+  #    msg: "{{ stat_result.stat.exists }}"
+
+  #- name: backing up existing ~/.zshrc if it exists
+  #  copy:
+  #    src: ~/.zshrc
+  #    dest: ~/.zshrc.orig
+  #    backup: yes
+  #  when: stat_result.stat.exists == True
+  #  register: backup
+
+  #- debug:
+  #    msg: "{{ backup }}"
+
+  - name: clone down oh-my-zsh
+    git:
+      repo: https://github.com/robbyrussell/oh-my-zsh
+      dest: ~/.oh-my-zsh
+    register: cloning_zsh
+
+  - name: creating new ~/.zshrc from oh-my-zsh template
+    copy:
+      src: ~/.oh-my-zsh/templates/zshrc.zsh-template
+      dest: ~/.zshrc
+    when: cloning_zsh|success
+
   - include: brew.yml
