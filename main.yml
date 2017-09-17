@@ -4,6 +4,7 @@
   vars: 
     full_name:  "{{ lookup('env', 'NAME') }}"
     email: "{{ lookup('env', 'EMAIL') }}"
+    user: "{{ lookup('env', 'USER') }}"
     github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
 
   tasks:
@@ -42,5 +43,14 @@
   - assert:
       that: result | version_compare ('4.3.9', '>=')
       msg: "zsh must be greater or equal to 4.3.9"
+
+  - name: assert that default shell is zsh
+    shell: >
+      dscl . -read /Users/{{ user }} UserShell |
+      awk '{ gsub("UserShell: ", "") ; print $0 }'
+    register: result
+
+  - assert:
+      that: result.stdout == "/bin/zsh"
 
   - include: brew.yml

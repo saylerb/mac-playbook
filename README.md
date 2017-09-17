@@ -20,6 +20,12 @@ one, copy to your clipboard. Then run the command below:
 export GITHUB_API_TOKEN=`pbpaste`
 ```
 
+Set zsh as default shell (will be prompted for password)
+
+```bash
+chsh -s $(which zsh)
+```
+
 To run the ansible-playbook to provision your mac, run the command:
 
 ```bash
@@ -30,3 +36,4 @@ ansible-playbook main.yml -i hosts.ini -v
 * Add a passphrase to the ssh-keygen
 * Add ssh-key to ssh-agent
 * Use uri module instead of curl for github key
+* automate changing of default shell to zsh
