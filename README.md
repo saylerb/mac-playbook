@@ -38,3 +38,5 @@ ansible-playbook main.yml -i hosts.ini -v
 * Use uri module instead of curl for github key
 * automate changing of default shell to zsh
 * check if zshrc back is actually working as intended
+* When running Vundle's plugin install, it exits with error code 1
+  Currently doing an ignore_error, but need to find a way around this

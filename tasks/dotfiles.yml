@@ -1,0 +1,26 @@
+---
+
+- name: clone down dotfiles from github
+  git:
+    repo: git@github.com:saylerb/dotfiles.git
+    dest: ~/dotfiles
+
+- name: symlink .vimrc to home directory
+  file:
+    src: ~/dotfiles/.vimrc
+    dest: ~/.vimrc
+    mode: 0755
+    state: link
+
+- name: download vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: ~/.vim/bundle/Vundle.vim
+
+- name: install plugins
+  shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+  ignore_errors: yes
+
+- name: Run PluginClean
+  shell: vim '+PluginClean!' +qall
+

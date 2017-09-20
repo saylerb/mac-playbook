@@ -35,5 +35,7 @@
            --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
 
+
   - include: tasks/zsh.yml
   - include: tasks/brew.yml
+  - include: tasks/dotfiles.yml
