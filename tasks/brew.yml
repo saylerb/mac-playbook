@@ -3,3 +3,8 @@
     command: "brew update"
     register: result
     changed_when: "result.stdout != 'Already up-to-date.'"
+
+  - name: install iterm
+    homebrew_cask:
+      name: iterm2
+      state: present
