@@ -23,6 +23,12 @@
       scope: global
       value: "{{ full_name }}"
   
+  - name:
+    git_config:
+      name: core.editor
+      scope: global
+      value: /usr/bin/vim
+
   - name: list out global git config
     git_config:
       list_all: yes
