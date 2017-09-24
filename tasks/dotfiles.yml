@@ -24,3 +24,16 @@
 - name: Run PluginClean
   shell: vim '+PluginClean!' +qall
 
+- name: download patched powerline fonts
+  git:
+    repo: https://github.com/powerline/fonts.git
+    depth: 1
+    dest: ~/fonts
+  register: fonts_result
+
+- name: install the fonts
+  command: ./install.sh
+  args:
+    chdir: ~/fonts
+  when: fonts_result|success
+
