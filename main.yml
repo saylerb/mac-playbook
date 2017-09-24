@@ -1,7 +1,7 @@
 ---
 - hosts: local
   gather_facts: false
-  vars: 
+  vars:
     full_name:  "{{ lookup('env', 'NAME') }}"
     email: "{{ lookup('env', 'EMAIL') }}"
     user: "{{ lookup('env', 'USER') }}"
@@ -11,7 +11,7 @@
   - name: generate an shh key
     command: ssh-keygen -t rsa -b 4096 -C {{ email }} -N "" -f ~/.ssh/id_rsa
     args:
-      creates: ~/.ssh/id_rsa 
+      creates: ~/.ssh/id_rsa
 
   - name: save public key to variable
     set_fact:
@@ -22,7 +22,7 @@
       name: user.name
       scope: global
       value: "{{ full_name }}"
-  
+
   - name:
     git_config:
       name: core.editor
