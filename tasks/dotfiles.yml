@@ -37,3 +37,7 @@
     chdir: ~/fonts
   when: fonts_result|success
 
+- name: download iterm2 color profile
+  get_url:
+    url: https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/iterm2/gruvbox-dark.itermcolors
+    dest: ~/Downloads/

@@ -32,11 +32,20 @@ To run the ansible-playbook to provision your mac, run the command:
 ansible-playbook main.yml -i hosts.ini -v
 ```
 
+# iterm2 color profile
+
+The playbook should install the iterm colors in ~/Downloads
+Open iterm and go to Profiles -> Colors -> Color Presets -> import color.
+Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
+
 ## TODO
 * Add a passphrase to the ssh-keygen
 * Add ssh-key to ssh-agent
 * Use uri module instead of curl for github key
-* automate changing of default shell to zsh
-* check if zshrc back is actually working as intended
-* When running Vundle's plugin install, it exits with error code 1
-  Currently doing an ignore_error, but need to find a way around this
+* Automate changing of default shell to zsh
+* Add ability to ask for sudo password at beginning of run
+* Check if zshrc back is actually working as intended
+* Vim plugin installation
+  * When running Vundle's plugin install, it exits with error code 1
+  * Currently doing an `ignore_error`, but need to find a way around this
+* Automate installation of color profile for iTerm
