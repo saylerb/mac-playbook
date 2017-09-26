@@ -29,13 +29,21 @@
     repo: https://github.com/powerline/fonts.git
     depth: 1
     dest: ~/fonts
-  register: fonts_result
+  register: fonts_download
+
+- name: check if fonts are already installed
+  find:
+    paths: ~/Library/Fonts
+    patterns: "*.ttf"
+  register: font_files
 
 - name: install the fonts
   command: ./install.sh
   args:
     chdir: ~/fonts
-  when: fonts_result|success
+  when:
+    - font_files.matched|int == 0
+    - fonts_download|success
 
 - name: download iterm2 color profile
   get_url:
