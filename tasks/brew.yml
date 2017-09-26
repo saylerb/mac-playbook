@@ -1,10 +1,20 @@
 ---
-  - name: update homebrew
-    command: "brew update"
-    register: result
-    changed_when: "result.stdout != 'Already up-to-date.'"
+- name: update homebrew
+  command: "brew update"
+  register: result
+  changed_when: "result.stdout != 'Already up-to-date.'"
 
-  - name: install iterm
-    homebrew_cask:
-      name: iterm2
-      state: present
+- name: install iterm
+  homebrew_cask:
+    name: iterm2
+    state: present
+
+- name: install chrome
+  homebrew_cask:
+    name: google-chrome
+    state: present
+
+- name: install dropbox
+  homebrew_cask:
+    name: dropbox
+    state: present
