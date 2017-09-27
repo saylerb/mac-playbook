@@ -4,22 +4,13 @@
   register: result
   changed_when: "result.stdout != 'Already up-to-date.'"
 
-- name: install iterm
+- name: install homebrew casks 
   homebrew_cask:
-    name: iterm2
+    name: "{{ item }}"
     state: present
-
-- name: install chrome
-  homebrew_cask:
-    name: google-chrome
-    state: present
-
-- name: install dropbox
-  homebrew_cask:
-    name: dropbox
-    state: present
-
-- name: install 1password
-  homebrew_cask:
-    name: 1password
-    state: present
+  with_items:
+    - iterm2
+    - google-chrome
+    - dropbox
+    - 1password
+    - alfred
