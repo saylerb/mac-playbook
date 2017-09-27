@@ -14,3 +14,13 @@
     - dropbox
     - 1password
     - alfred
+
+- name: install homebrew packages
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - fzf
+
+- name: install fzf keybindings
+  shell: $(brew --prefix)/opt/fzf/install --all
