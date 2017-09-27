@@ -41,6 +41,7 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 ## TODO
 * Add a passphrase to the ssh-keygen
 * Add ssh-key to ssh-agent
+* Move global git config to dotfiles repo
 * Use uri module instead of curl for github key
 * Automate changing of default shell to zsh
 * Add ability to ask for sudo password at beginning of run
