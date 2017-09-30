@@ -7,10 +7,13 @@
 
 - name: symlink .vimrc to home directory
   file:
-    src: ~/dotfiles/.vimrc
-    dest: ~/.vimrc
+    src: ~/dotfiles/{{ item }}
+    dest: ~/{{ item }}
     mode: 0755
     state: link
+  with_items:
+    - .vimrc
+    - .tmux.conf
 
 - name: download vundle
   git:

@@ -21,6 +21,7 @@
     state: present
   with_items:
     - fzf
+    - tmux
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --all
