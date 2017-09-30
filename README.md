@@ -34,9 +34,14 @@ ansible-playbook main.yml -i hosts.ini -v
 
 # iterm2 color profile
 
+## Fonts
 The playbook should install the iterm colors in ~/Downloads
 Open iterm and go to Profiles -> Colors -> Color Presets -> import color.
 Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
+
+## Clipboard
+* Can now remove `reattach-to-user-namespace`
+* Must enable "Applications in terminal may access clipboard" in iTerm2
 
 ## TODO
 * Add a passphrase to the ssh-keygen

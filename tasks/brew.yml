@@ -21,7 +21,6 @@
     state: present
   with_items:
     - fzf
-    - reattach-to-user-namespace
     - tmux
 
 - name: install fzf keybindings
