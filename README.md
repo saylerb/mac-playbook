@@ -50,8 +50,9 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 * Use uri module instead of curl for github key
 * Automate changing of default shell to zsh
 * Add ability to ask for sudo password at beginning of run
-* Check if zshrc back is actually working as intended
+* Check if zshrc backup is actually working as intended
 * Vim plugin installation
   * When running Vundle's plugin install, it exits with error code 1
   * Currently doing an `ignore_error`, but need to find a way around this
 * Automate installation of color profile for iTerm
+* Automate installation of Quiver
