@@ -24,6 +24,7 @@
   with_items:
     - fzf
     - tmux
+    - exercism
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --all
