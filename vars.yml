@@ -1,0 +1,1 @@
+exercism_api_key: "{{ vault_exercism_api_key }}"

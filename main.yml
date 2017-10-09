@@ -6,6 +6,9 @@
     email: "{{ lookup('env', 'EMAIL') }}"
     user: "{{ lookup('env', 'USER') }}"
     github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
+  vars_files:
+    - vars.yml
+    - vault.yml
 
   tasks:
   - name: generate an shh key
