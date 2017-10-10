@@ -25,6 +25,7 @@
     - fzf
     - tmux
     - exercism
+    - gradle
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --all
