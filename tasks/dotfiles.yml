@@ -15,6 +15,7 @@
     - .vimrc
     - .tmux.conf
     - .bash_profile
+    - .ruby-version
 
 - name: download vundle
   git:
