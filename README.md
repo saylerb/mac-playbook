@@ -56,3 +56,5 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
   * Currently doing an `ignore_error`, but need to find a way around this
 * Automate installation of color profile for iTerm
 * Automate installation of Quiver
+* Set up password file and gitignore
+* Configure inventory and/or vars so that I don't have to supply password everytime
