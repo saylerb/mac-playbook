@@ -1,0 +1,43 @@
+---
+
+- name: install chruby and ruby-install
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - chruby
+    - ruby-install
+
+- name: source chruby in .bash_profile and .zshrc
+  lineinfile:
+    path: "{{ item }}"
+    state: present
+    regexp: '^source\ \/usr\/local\/opt\/chruby\/share\/chruby\/chruby.sh'
+    line: 'source /usr/local/opt/chruby/share/chruby/chruby.sh'
+  with_items:
+    - ~/.zshrc
+    - ~/.bash_profile
+
+- name: source chruby auto in .bash_profile and .zshrc
+  lineinfile:
+    path: "{{ item }}"
+    state: present
+    regexp: '^source\ \/usr\/local\/opt\/chruby\/share\/chruby\/auto.sh'
+    line: 'source /usr/local/opt/chruby/share/chruby/auto.sh'
+  with_items:
+    - ~/.zshrc
+    - ~/.bash_profile
+
+- name: get ruby version from dotfile
+  set_fact:
+    global_ruby_version: "{{ lookup('file', '~/.ruby-version') }}"
+
+- name: install ruby version
+  command: ruby-install ruby {{ global_ruby_version.split('-')[-1] }}
+  args:
+    creates: ~/.rubies/{{ global_ruby_version }}
+
+- name: check global ruby version directory exists
+  stat:
+    path: ~/.rubies/{{ global_ruby_version }}
+  register: ruby_global_dir
