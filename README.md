@@ -32,7 +32,11 @@ To run the ansible-playbook to provision your mac, run the command:
 ansible-playbook main.yml -i hosts.ini -v
 ```
 
-# iterm2 color profile
+
+# iTerm2
+
+## Silence bell
+Preferences -> Profiles -> Terminal tab -> Check "Silence bell"
 
 ## Fonts
 The playbook should install the iterm colors in ~/Downloads
