@@ -62,3 +62,4 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 * Automate installation of Quiver
 * Set up password file and gitignore
 * Configure inventory and/or vars so that I don't have to supply password everytime
+* include Java installation stuff in the main.yml
