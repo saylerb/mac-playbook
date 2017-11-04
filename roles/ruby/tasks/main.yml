@@ -32,6 +32,15 @@
   set_fact:
     global_ruby_version: "{{ lookup('file', '~/.ruby-version') }}"
 
+- name: check if already installed
+  stat:
+    path: ~/.rubies/{{ global_ruby_version }}
+  register: check_if_ruby_installed_result
+
+- debug:
+    msg: "About to install ruby {{ global_ruby_version.split('-')[-1] }}. This might take a while"
+  when: check_if_ruby_installed_result.stat.exists == False
+
 - name: install ruby version
   command: ruby-install ruby {{ global_ruby_version.split('-')[-1] }}
   args:
