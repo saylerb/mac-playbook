@@ -49,5 +49,5 @@
   - include: tasks/brew.yml
   - include: tasks/dotfiles.yml
 
-  roles:
-    - ruby
+  - include_role:
+      name: ruby
