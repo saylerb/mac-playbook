@@ -25,7 +25,6 @@
     - fzf
     - tmux
     - exercism
-    - gradle
     - awscli
 
 - name: install fzf keybindings
