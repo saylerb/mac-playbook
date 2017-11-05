@@ -26,12 +26,19 @@ Set zsh as default shell (will be prompted for password)
 chsh -s $(which zsh)
 ```
 
+Currently I'm using ansible vault to store encrypt some keys. To run the playbook,
+save the password in a single-line file in the working directory as `vault_pass.txt`.
 To run the ansible-playbook to provision your mac, run the command:
 
 ```bash
-ansible-playbook main.yml -i hosts.ini -v
+ansible-playbook main.yml -i hosts.ini --vault-password-file ./.vault_pass.txt -vvv
 ```
 
+Alternatively, you can run the playbook with a prompt to enter the password:
+
+```bash
+ansible-playbook main.yml -i hosts.ini --ask-vault-pass -vvv
+```
 
 # iTerm2
 
