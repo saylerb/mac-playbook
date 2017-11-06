@@ -26,9 +26,10 @@ Set zsh as default shell (will be prompted for password)
 chsh -s $(which zsh)
 ```
 
-Currently I'm using ansible vault to store encrypt some keys. To run the playbook,
-save the password in a single-line file in the working directory as `vault_pass.txt`.
-To run the ansible-playbook to provision your mac, run the command:
+Currently I'm using ansible vault to store some encrypted keys. To run the
+playbook, save the password in a single-line file in the working directory as
+`vault_pass.txt`.  To run the ansible-playbook to provision your mac, run the
+command:
 
 ```bash
 ansible-playbook main.yml -i hosts.ini --vault-password-file ./.vault_pass.txt -vvv
@@ -67,6 +68,4 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
   * Currently doing an `ignore_error`, but need to find a way around this
 * Automate installation of color profile for iTerm
 * Automate installation of Quiver
-* Set up password file and gitignore
-* Configure inventory and/or vars so that I don't have to supply password everytime
 * include Java installation stuff in the main.yml
