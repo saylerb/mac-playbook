@@ -1,6 +1,11 @@
 # mac-playbook
 
-This is a repo for bootstrapping my mac!
+This is Ansible playbook for bootstrapping my mac!
+
+There are many tools out there for provisioning machines and scripting a mac
+setup.  I wanted to learn how to use Ansible playbooks, and wanted something
+that was idempotent for running my mac setup. My goal here is to do both: to
+learn the different modules available while creating something useful to me.
 
 Run the commands below to execute:
 
