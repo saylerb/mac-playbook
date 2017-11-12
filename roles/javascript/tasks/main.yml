@@ -28,22 +28,12 @@
   tags:
     - nvm
 
-- debug:
-    var: nvm_dir
-  tags:
-    - nvm
-
 - name: get latest tag name
   shell: "git describe --abbrev=0 --tags --match 'v[0-9]*' origin"
   args:
     chdir: "{{ nvm_dir }}"
   register: latest_tag
   tags: 
-    - nvm
-
-- debug:
-    var: latest_tag
-  tags:
     - nvm
 
 - name: checkout latest nvm tag
