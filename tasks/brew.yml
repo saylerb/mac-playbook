@@ -31,6 +31,9 @@
     - tmux
     - exercism
     - awscli
+    - tree
+  tags:
+    - packages
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --all
