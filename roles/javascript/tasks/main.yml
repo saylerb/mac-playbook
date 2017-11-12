@@ -55,17 +55,8 @@
   tags:
     - nvm
 
-- name: set permissions on .nvm.sh
-  file:
-    path: "{{ nvm_dir }}/nvm.sh"
-    state: touch
-    mode: "a+x"
-  when: nvm_check.stat.exists
-  tags:
-    - nvm
-
-- name: run the nvm script to load
-  shell: /bin/sh "./nvm.sh"
+- name: source the nvm script to load
+  shell: . ./nvm.sh
   args:
     chdir: "{{ nvm_dir }}"
   tags:
@@ -78,5 +69,15 @@
       export NVM_DIR="$HOME/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     marker: '# {mark} ANSIBLE MANAGED BLOCK - nvm'
+  tags:
+    - nvm
+
+- name: install carbon LTS
+  shell: source ~/.zshrc && nvm install --lts=carbon
+  tags:
+    - nvm
+
+- name: update npm
+  shell: npm install -g npm
   tags:
     - nvm
