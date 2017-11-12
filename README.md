@@ -74,3 +74,4 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 * Automate installation of color profile for iTerm
 * Automate installation of Quiver
 * include Java installation stuff in the main.yml
+* improve nvm installation. Add nvm load in bashrc
