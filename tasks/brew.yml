@@ -16,6 +16,9 @@
     - alfred
     - spectacle
     - spotify
+    - virtualbox
+    - vagrant
+    - vagrant-manager
   tags:
     - casks
 
