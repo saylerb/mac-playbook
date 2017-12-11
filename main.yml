@@ -51,4 +51,7 @@
 
   - include_role:
       name: ruby
+  - include_role:
       name: javascript
+  - include_role:
+      name: docker

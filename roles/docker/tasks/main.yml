@@ -1,0 +1,23 @@
+---
+
+- name: install docker for mac
+  homebrew_cask:
+    name: docker
+    state: present
+  tags:
+    - docker
+
+- name: check if docker is symlinked
+  stat:
+    path: /usr/local/bin/{{ item }}
+  with_items: "{{ docker_links }}"
+  register: check_docker_links
+  tags:
+    - docker
+
+- debug:
+    msg: "{{ item.item }} not linked. Open Docker.app to complete symlinking!"
+  with_items: "{{ check_docker_links.results }}"
+  when: item.stat.islnk is not defined
+  tags:
+    - docker
