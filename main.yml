@@ -45,9 +45,9 @@
            https://api.github.com/user/keys
 
 
-  - include: tasks/zsh.yml
   - include: tasks/brew.yml
   - include: tasks/dotfiles.yml
+  - include: tasks/zsh.yml
 
   - include_role:
       name: ruby
