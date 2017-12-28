@@ -1,0 +1,73 @@
+---
+
+- name: check .nvm dir exists
+  stat:
+    path: ~/.nvm
+  register: nvm_check
+  tags:
+    - nvm
+
+- name: clone down the nvm repo
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: ~/.nvm
+    update: no
+  when: not nvm_check.stat.exists
+  tags:
+    - nvm
+
+- name: check .nvm dir exists
+  stat:
+    path: ~/.nvm
+  register: nvm_check
+  tags:
+    - nvm
+
+- set_fact:
+    nvm_dir: "{{ nvm_check.stat.path }}"
+  tags:
+    - nvm
+
+- name: get latest tag name
+  shell: "git describe --abbrev=0 --tags --match 'v[0-9]*' origin"
+  args:
+    chdir: "{{ nvm_dir }}"
+  register: latest_tag
+  tags:
+    - nvm
+
+- name: checkout latest nvm tag
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: "{{ nvm_dir }}"
+    version: "{{ latest_tag.stdout }}"
+  when: not nvm_check.stat.exists
+  tags:
+    - nvm
+
+- name: source the nvm script to load
+  shell: . ./nvm.sh
+  args:
+    chdir: "{{ nvm_dir }}"
+  tags:
+    - nvm
+
+- name: add nvm load to zshrc
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    marker: '# {mark} ANSIBLE MANAGED BLOCK - nvm'
+  tags:
+    - nvm
+
+- name: install carbon LTS
+  shell: source ~/.zshrc && nvm install --lts=carbon
+  tags:
+    - nvm
+
+- name: update npm
+  shell: npm install -g npm
+  tags:
+    - nvm
