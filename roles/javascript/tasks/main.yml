@@ -1,11 +1,13 @@
 ---
 
-- name: install nvm
+- name: install nvm and use to install node
   include: nvm.yml
 
-- name: install yarn via brew
+- name: install yarn via brew excluding node
   homebrew:
     name: yarn
     state: present
+    install_options: without-node
   tags:
     - nvm
+    - yarn
