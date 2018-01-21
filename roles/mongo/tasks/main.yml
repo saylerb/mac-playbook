@@ -1,0 +1,17 @@
+---
+- name: install mongo via brew
+  homebrew:
+    name: mongodb
+    state: present
+    update_homebrew: yes
+  tags:
+    - mongo
+
+- name: create /data/db directory
+  file:
+    path: /data/db
+    state: directory
+    mode: 0755
+  become: true
+  tags:
+    - mongo
