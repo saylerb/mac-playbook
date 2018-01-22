@@ -7,6 +7,15 @@ setup.  I wanted to learn how to use Ansible playbooks, and wanted something
 that was idempotent for running my mac setup. My goal here is to do both: to
 learn the different modules available while creating something useful to me.
 
+## Downloading Ansible
+
+In order to use the Playbook to provision your machine, you'll need to have
+Ansible installed. There's a simple bash script `bootstrap.sh` which will
+automate the installation using Python's package manager. This script is not
+executable, you can run it with the command `sh bootstrap.sh`.
+
+## Required additional setup
+
 Run the commands below to execute:
 
 The playbook requires the following ENV variables to be defined to set up a
@@ -73,6 +82,6 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
   * Currently doing an `ignore_error`, but need to find a way around this
 * Automate installation of color profile for iTerm
 * Automate installation of Quiver
-* include Java installation stuff in the main.yml
-* improve nvm installation. Add nvm load in bashrc. 
-  Need to source zshrc after to get it to work
+* Include Java installation stuff in the main.yml
+* Improve nvm installation. Add nvm load in bashrc.
+* Need to source zshrc after to get it to work
