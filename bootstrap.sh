@@ -19,7 +19,7 @@ then
 fi
 
 sudo pip install --upgrade
-sudo pip install ansible
+sudo pip install ansible==2.3.2.0
 
 # Avoid prompt to continue by redirecting stdin from /dev/null
 if [ ! `which brew` ]
