@@ -82,6 +82,5 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
   * Currently doing an `ignore_error`, but need to find a way around this
 * Automate installation of color profile for iTerm
 * Automate installation of Quiver
-* Include Java installation stuff in the main.yml
 * Improve nvm installation. Add nvm load in bashrc.
 * Need to source zshrc after to get it to work

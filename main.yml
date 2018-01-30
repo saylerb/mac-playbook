@@ -57,3 +57,5 @@
       name: docker
   - include_role:
       name: mongo
+  - include_role:
+      name: java
