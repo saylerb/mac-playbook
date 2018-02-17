@@ -84,3 +84,5 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 * Automate installation of Quiver
 * Improve nvm installation. Add nvm load in bashrc.
 * Need to source zshrc after to get it to work
+* Install global yarn/npm packages
+
