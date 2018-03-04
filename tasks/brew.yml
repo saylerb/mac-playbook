@@ -33,6 +33,7 @@
     - awscli
     - tree
     - antigen
+    - hub
   tags:
     - packages
 
