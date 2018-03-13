@@ -4,7 +4,7 @@
   register: result
   changed_when: "result.stdout != 'Already up-to-date.'"
 
-- name: install homebrew casks 
+- name: install homebrew casks
   homebrew_cask:
     name: "{{ item }}"
     state: present
@@ -34,6 +34,7 @@
     - tree
     - antigen
     - hub
+    - httpie
   tags:
     - packages
 
