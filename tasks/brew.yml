@@ -19,6 +19,7 @@
     - virtualbox
     - vagrant
     - vagrant-manager
+    - intellij-idea
   tags:
     - casks
 
