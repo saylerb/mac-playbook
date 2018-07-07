@@ -38,6 +38,7 @@
     - antigen
     - hub
     - httpie
+    - postgresql
   tags:
     - packages
 
