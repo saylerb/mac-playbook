@@ -2,7 +2,7 @@
 
 - name: install java cask
   homebrew_cask:
-    name: java
+    name: java8
     state: present
   tags: java
 
