@@ -44,6 +44,8 @@
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --all
+  tags:
+   - packages
 
 - name: configure exercism api key
   command: exercism configure --key={{ exercism_api_key }} --dir=~/projects/exercism
