@@ -52,22 +52,12 @@
   tags:
     - nvm
 
-- name: add nvm load to zshrc
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
-      export NVM_DIR="$HOME/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    marker: '# {mark} ANSIBLE MANAGED BLOCK - nvm'
-  tags:
-    - nvm
-
 - name: install carbon LTS
   shell: source ~/.zshrc && nvm install --lts=carbon
   tags:
     - nvm
 
 - name: update npm
-  shell: npm install -g npm
+  shell: source ~/.zshrc && npm install -g npm
   tags:
     - nvm
