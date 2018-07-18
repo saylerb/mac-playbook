@@ -9,7 +9,7 @@
   file:
     src: ~/dotfiles/{{ item }}
     dest: ~/{{ item }}
-    mode: 0755
+    mode: '0644'
     state: link
   with_items:
     - .vimrc
