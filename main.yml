@@ -61,3 +61,5 @@
       name: mongo
   - include_role:
       name: java
+    tags:
+      - java

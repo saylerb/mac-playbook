@@ -1,5 +1,9 @@
 ---
 
+- name: tap caskroom so we can install java8
+  shell: brew tap caskroom/versions
+  tags: java
+
 - name: install java cask
   homebrew_cask:
     name: java8
