@@ -2,6 +2,8 @@
 
 - name: install nvm and use to install node
   include: nvm.yml
+  tags:
+    - nvm
 
 - name: install yarn via brew excluding node
   homebrew:

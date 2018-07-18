@@ -53,6 +53,8 @@
       name: ruby
   - include_role:
       name: javascript
+    tags:
+      - nvm
   - include_role:
       name: docker
   - include_role:
