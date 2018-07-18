@@ -38,7 +38,7 @@
     - antigen
     - hub
     - httpie
-    - postgresql
+    - vim
   tags:
     - packages
 
