@@ -60,10 +60,15 @@ ansible-playbook main.yml -i hosts.ini --ask-vault-pass -vvv
 ## Silence bell
 Preferences -> Profiles -> Terminal tab -> Check "Silence bell"
 
-## Fonts
+## Color scheme
 The playbook should install the iterm colors in ~/Downloads
 Open iterm and go to Profiles -> Colors -> Color Presets -> import color.
 Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
+
+## Fonts
+Playbook should install patched powerline fonts automatically. Go to iterm2
+Preferences -> Profiles -> Text -> Change Font and select any of the fonts
+for Powerline.
 
 ## Clipboard
 * Can now remove `reattach-to-user-namespace`
@@ -85,4 +90,5 @@ Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 * Improve nvm installation. Add nvm load in bashrc.
 * Need to source zshrc after to get it to work
 * Install global yarn/npm packages
+* Remove checking for .zshrc since .zhrc is included in dotfiles repo
 
