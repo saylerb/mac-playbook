@@ -34,12 +34,6 @@ one, copy to your clipboard. Then run the command below:
 export GITHUB_API_TOKEN=`pbpaste`
 ```
 
-Set zsh as default shell (will be prompted for password)
-
-```bash
-chsh -s $(which zsh)
-```
-
 Currently I'm using ansible vault to store some encrypted keys. To run the
 playbook, save the password in a single-line file in the working directory as
 `vault_pass.txt`.  To run the ansible-playbook to provision your mac, run the

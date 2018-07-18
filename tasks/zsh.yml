@@ -8,6 +8,9 @@
       that: result | version_compare ('4.3.9', '>=')
       msg: "zsh must be greater or equal to 4.3.9"
 
+  - name: make zsh the default shell
+    shell: chsh -s /bin/zsh
+
   - name: assert that default shell is zsh
     shell: >
       dscl . -read /Users/{{ user }} UserShell |
