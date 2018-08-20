@@ -25,6 +25,7 @@
     - postman
     - slack
     - whatsapp
+    - flux
   tags:
     - casks
 
