@@ -20,6 +20,7 @@
     - vagrant
     - vagrant-manager
     - intellij-idea
+    - webstorm
     - visual-studio-code
     - postman
     - slack
