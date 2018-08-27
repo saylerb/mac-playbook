@@ -46,7 +46,7 @@
     - packages
 
 - name: install fzf keybindings
-  shell: $(brew --prefix)/opt/fzf/install --all
+  shell: $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
   tags:
    - packages
 
