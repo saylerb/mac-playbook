@@ -6,7 +6,8 @@ if [[ -n "$name" ]]; then
       --vault-password-file ./.vault_pass.txt \
       --tags $name \
       -vvv \
-      --ask-become-pass
+      --ask-become-pass \
+      --step
 else
    echo "You didn't specify any tags!"
 fi
