@@ -57,6 +57,7 @@
       - nvm
   - include_role:
       name: docker
+    tags: docker
   - include_role:
       name: mongo
   - include_role:
