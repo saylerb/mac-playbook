@@ -34,6 +34,8 @@ one, copy to your clipboard. Then run the command below:
 export GITHUB_API_TOKEN=`pbpaste`
 ```
 
+#### Ansible vault
+
 Currently I'm using ansible vault to store some encrypted keys. To run the
 playbook, save the password in a single-line file in the working directory as
 `vault_pass.txt`.  To run the ansible-playbook to provision your mac, run the
@@ -47,6 +49,16 @@ Alternatively, you can run the playbook with a prompt to enter the password:
 
 ```bash
 ansible-playbook main.yml -i hosts.ini --ask-vault-pass -vvv
+```
+
+#### Running tasks selectively
+
+Running the playbook in step: provide the `--step` flag to be asked a
+confirmation before running each task.
+Running specific tags by tag, provide the `--tags=TAGS` flag
+
+```bash
+ansible-playbook main.yml -i hosts.ini --ask-vault-pass --tags="packages, brew" --step
 ```
 
 # iTerm2
