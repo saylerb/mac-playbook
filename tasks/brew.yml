@@ -44,6 +44,7 @@
     - httpie
     - vim
     - elm
+    - python@2
   tags:
     - packages
 
