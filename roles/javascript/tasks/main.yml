@@ -13,3 +13,8 @@
   tags:
     - nvm
     - yarn
+
+- name: install global npm packages
+  include: npm.yml
+  tags:
+    - npm

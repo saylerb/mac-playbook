@@ -55,6 +55,7 @@
       name: javascript
     tags:
       - nvm
+      - npm
   - include_role:
       name: docker
     tags: docker

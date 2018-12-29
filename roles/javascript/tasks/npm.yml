@@ -1,0 +1,11 @@
+---
+
+- name: install global packages
+  npm: 
+    name: "{{ item }}"
+    global: yes
+  with_items:
+    - gatsby-cli
+    - canvas-sketch-cli
+  tags: 
+    - npm
