@@ -96,5 +96,7 @@ for Powerline.
 * Improve nvm installation. Add nvm load in bashrc.
 * Need to source zshrc after to get it to work
 * Install global yarn/npm packages
+	* ncu (npm check update)
 * Remove checking for .zshrc since .zhrc is included in dotfiles repo
+
 
