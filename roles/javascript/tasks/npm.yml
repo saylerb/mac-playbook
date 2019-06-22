@@ -7,5 +7,6 @@
   with_items:
     - gatsby-cli
     - canvas-sketch-cli
+    - elm-format
   tags: 
     - npm
