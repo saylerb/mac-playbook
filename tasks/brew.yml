@@ -26,7 +26,6 @@
     - slack
     - whatsapp
     - flux
-    - jetbrains-toolbox
     - microsoft-teams
   tags:
     - casks
