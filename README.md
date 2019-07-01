@@ -28,7 +28,11 @@ export EMAIL=your_email_here
 
 To automatically generate and setup ssh keys for github, the playbook needs a
 github api token. Go to github settings, personal access tokens and generate
-one, copy to your clipboard. Then run the command below:
+one. When generating a new key, make sure to select the correct scopes. For
+example, if you want to programmically add a public key to github, check the
+`admin:public_key` scope. When you're done, copy the API key to your clipboard.
+Then run the command below to add the key to an environment variable so the
+ansible script can read it out:
 
 ```bash
 export GITHUB_API_TOKEN=`pbpaste`
