@@ -9,5 +9,11 @@ if [[ -n "$name" ]]; then
       --ask-become-pass \
       --step
 else
-   echo "You didn't specify any tags!"
+   echo "You didn't specify any tags! Running all tasks"
+   ansible-playbook main.yml \
+      -i hosts.ini \
+      --vault-password-file ./.vault_pass.txt \
+      -vvv \
+      --ask-become-pass \
+      --step
 fi
