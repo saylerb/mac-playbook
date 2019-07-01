@@ -57,6 +57,11 @@
   tags:
     - nvm
 
+- name: install dubnium LTS
+  shell: source ~/.zshrc && nvm install --lts=dubnium
+  tags:
+    - nvm
+
 - name: update npm
   shell: source ~/.zshrc && npm install -g npm
   tags:
