@@ -16,10 +16,6 @@
     args:
       creates: ~/.ssh/id_rsa
 
-  - name: save public key to variable
-    set_fact:
-      public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-
   - name: getup global git config
     git_config:
       name: user.name
@@ -37,13 +33,20 @@
       list_all: yes
       scope: global
 
+  - name: save public key to variable
+    set_fact:
+      public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    tags:
+      - github
+
   - name: add public key to github
     shell: |
       curl -H "Content-Type: application/json"\
            -H "Authorization: token $GITHUB_API_TOKEN"\
            --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
-
+    tags:
+      - github
 
   - include: tasks/brew.yml
   - include: tasks/dotfiles.yml
