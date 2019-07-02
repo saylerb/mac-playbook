@@ -9,7 +9,6 @@
   homebrew:
     name: yarn
     state: present
-    install_options: without-node
   tags:
     - nvm
     - yarn
