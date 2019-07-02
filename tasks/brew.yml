@@ -62,5 +62,15 @@
   tags:
    - packages
 
+- name: create workspace with personal directory
+  file:
+    path: ~/workspace/personal
+    state: directory
+  tags:
+    - exercism
+
+
 - name: configure exercism api key
-  command: exercism configure --key={{ exercism_api_key }} --dir=~/projects/exercism
+  command: exercism configure --token={{ exercism_api_key }} --workspace=~/workspace/personal/exercism
+  tags:
+    - exercism
