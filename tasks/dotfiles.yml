@@ -17,6 +17,31 @@
     - .bash_profile
     - .ruby-version
     - .zshrc
+  tags:
+    - links
+
+- name: remove vscode settings if they exist
+  file:
+    src: ~/dotfiles/vscode/{{ item }}
+    path: ~/library/Application Support/Code/User/{{ item }}
+    state: absent
+  with_items:
+    - settings.json
+    - keybindings.json
+  tags:
+    - links
+
+- name: symlink vscode configuration files
+  file:
+    src: ~/dotfiles/vscode/{{ item }}
+    dest: ~/library/application support/code/user/{{ item }}
+    mode: 0644
+    state: link
+  with_items:
+    - settings.json
+    - keybindings.json
+  tags:
+    - links
 
 - name: download vundle
   git:
