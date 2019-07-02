@@ -55,6 +55,13 @@ Alternatively, you can run the playbook with a prompt to enter the password:
 ansible-playbook main.yml -i hosts.ini --ask-vault-pass -vvv
 ```
 
+If you want to edit the encrypted file, run the command below and enter the
+vault password when prompted.
+
+```
+ansible-vault edit vault.yml
+```
+
 #### Running tasks selectively
 
 Running the playbook in step: provide the `--step` flag to be asked a
