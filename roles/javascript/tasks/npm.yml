@@ -8,5 +8,6 @@
     - gatsby-cli
     - canvas-sketch-cli
     - elm-format
+    - create-elm-app
   tags: 
     - npm
