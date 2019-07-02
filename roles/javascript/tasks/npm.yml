@@ -9,5 +9,6 @@
     - canvas-sketch-cli
     - elm-format
     - create-elm-app
+    - prettier
   tags: 
     - npm
