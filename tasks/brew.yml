@@ -62,6 +62,7 @@
     - elm
     - python@2
     - heroku
+    - postgres
   tags:
     - packages
     - homebrew
