@@ -3,13 +3,15 @@
   command: "brew update"
   register: result
   changed_when: "result.stdout != 'Already up-to-date.'"
+  tags:
+    - homebrew
 
 - name: tap homebrew cask fonts
   homebrew_tap:
     name: homebrew/cask-fonts
   tags:
     - casks
-
+    - homebrew
 
 - name: install homebrew casks
   homebrew_cask:
@@ -34,6 +36,14 @@
     - font-fira-code
   tags:
     - casks
+    - homebrew
+
+- name: tap heroku repository
+  homebrew_tap:
+    name: heroku/brew
+  tags:
+    - casks
+    - homebrew
 
 - name: install homebrew packages
   homebrew:
@@ -51,13 +61,16 @@
     - vim
     - elm
     - python@2
+    - heroku
   tags:
     - packages
+    - homebrew
 
 - name: install fzf keybindings
   shell: $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
   tags:
    - packages
+   - homebrew
 
 - name: create workspace with personal directory
   file:
@@ -65,6 +78,7 @@
     state: directory
   tags:
     - exercism
+    - homebrew
 
 
 - name: configure exercism api key
