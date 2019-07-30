@@ -46,6 +46,17 @@
     - casks
     - homebrew
 
+#- name: install vagrant casks
+#  homebrew_cask:
+#    name: "{{ item }}"
+#    state: present
+#  with_items:
+#    - virtualbox
+#    - vagrant
+#    - vagrant-manager
+#  tags:
+#    - casks
+
 - name: install homebrew packages
   homebrew:
     name: "{{ item }}"
