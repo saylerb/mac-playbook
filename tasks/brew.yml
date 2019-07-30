@@ -20,6 +20,7 @@
   with_items:
     - iterm2
     - google-chrome
+    - firefox
     - dropbox
     - 1password
     - alfred
