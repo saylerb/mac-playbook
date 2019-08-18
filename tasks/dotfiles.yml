@@ -17,6 +17,7 @@
     - .bash_profile
     - .ruby-version
     - .zshrc
+    - .gitconfig
   tags:
     - links
 
