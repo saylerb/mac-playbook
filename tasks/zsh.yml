@@ -24,31 +24,5 @@
     stat:
       path: ~/.zshrc
     register: zshrc
-
-  - debug:
-      msg: "{{ zshrc }}"
-
-  - name: backing up existing ~/.zshrc if it exists
-    copy:
-      src: ~/.zshrc
-      dest: ~/.zshrc.orig
-      backup: yes
-    when: zshrc.stat.exists == True
-    register: backup
-
-  - debug:
-      msg: "{{ backup }}"
-
-  - name: clone down oh-my-zsh
-    git:
-      repo: https://github.com/robbyrussell/oh-my-zsh
-      dest: ~/.oh-my-zsh
-    when: zshrc.stat.exists == False
-    register: cloning_zsh
-
-  - name: creating new ~/.zshrc from oh-my-zsh template
-    copy:
-      src: ~/.oh-my-zsh/templates/zshrc.zsh-template
-      dest: ~/.zshrc
-    when: zshrc.stat.exists == False and cloning_zsh|success
-
+    tags:
+      - zsh

@@ -96,18 +96,13 @@ for Powerline.
 * Add ssh-key to ssh-agent
 * Move global git config to dotfiles repo
 * Use uri module instead of curl for github key
-* Automate changing of default shell to zsh
 * Add ability to ask for sudo password at beginning of run
-* Check if zshrc backup is actually working as intended
 * Vim plugin installation
   * When running Vundle's plugin install, it exits with error code 1
   * Currently doing an `ignore_error`, but need to find a way around this
+  * Maybe us Plug instead of Vundle
 * Automate installation of color profile for iTerm
-* Automate installation of Quiver
 * Improve nvm installation. Add nvm load in bashrc.
-* Need to source zshrc after to get it to work
 * Install global yarn/npm packages
 * ncu (npm check update)
-* Remove checking for .zshrc since .zhrc is included in dotfiles repo
-
 
