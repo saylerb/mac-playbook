@@ -12,21 +12,25 @@
   lineinfile:
     path: "{{ item }}"
     state: present
-    regexp: '^source\ \/usr\/local\/opt\/chruby\/share\/chruby\/chruby.sh'
-    line: 'source /usr/local/opt/chruby/share/chruby/chruby.sh'
+    regexp: '\[ -f \/usr\/local\/opt\/chruby\/share\/chruby\/chruby\.sh \] \&\& source \/usr\/local\/opt\/chruby\/share\/chruby\/chruby\.sh'
+    line: '[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh'
   with_items:
     - ~/.zshrc
     - ~/.bash_profile
+  tags:
+    - chruby
 
 - name: source chruby auto in .bash_profile and .zshrc
   lineinfile:
     path: "{{ item }}"
     state: present
-    regexp: '^source\ \/usr\/local\/opt\/chruby\/share\/chruby\/auto.sh'
-    line: 'source /usr/local/opt/chruby/share/chruby/auto.sh'
+    regexp: '\[ -f \/usr\/local\/opt\/chruby\/share\/chruby\/auto\.sh \] \&\& source \/usr\/local\/opt\/chruby\/share\/chruby\/auto\.sh'
+    line: '[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh'
   with_items:
     - ~/.zshrc
     - ~/.bash_profile
+  tags:
+    - chruby
 
 - name: get ruby version from dotfile
   set_fact:
