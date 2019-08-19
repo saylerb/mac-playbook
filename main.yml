@@ -68,3 +68,7 @@
       name: java
     tags:
       - java
+  - include_role:
+      name: python
+    tags:
+      - python
