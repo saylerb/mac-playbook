@@ -67,6 +67,7 @@
     - tmux
     - exercism
     - awscli
+    - aws-iam-authenticator
     - tree
     - antigen
     - hub
@@ -76,6 +77,12 @@
     - python@2
     - heroku
     - postgres
+    - circleci
+    - hadolint
+    - kubernetes-cli
+    - terraform
+    - vault
+    - yamllint
   tags:
     - packages
     - homebrew
