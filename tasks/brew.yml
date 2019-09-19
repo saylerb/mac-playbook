@@ -36,6 +36,7 @@
     - microsoft-teams
     - font-fira-code
     - zoomus
+    - aws-vault
   tags:
     - casks
     - homebrew
