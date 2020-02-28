@@ -27,12 +27,12 @@ export EMAIL=your_email_here
 ```
 
 To automatically generate and setup ssh keys for github, the playbook needs a
-github api token. Go to github settings, personal access tokens and generate
-one. When generating a new key, make sure to select the correct scopes. For
-example, if you want to programmically add a public key to github, check the
-`admin:public_key` scope. When you're done, copy the API key to your clipboard.
-Then run the command below to add the key to an environment variable so the
-ansible script can read it out:
+github api token. Go to github settings > developer settings > personal access
+tokens and generate one. When generating a new key, make sure to select the
+correct scopes. For example, if you want to programmically add a public key to
+github, check the `admin:public_key` scope. When you're done, copy the API key
+to your clipboard.  Then run the command below to add the key to an environment
+variable so the ansible script can read it out:
 
 ```bash
 export GITHUB_API_TOKEN=`pbpaste`
@@ -72,6 +72,13 @@ Running specific tags by tag, provide the `--tags=TAGS` flag
 ansible-playbook main.yml -i hosts.ini --ask-vault-pass --tags="packages, brew" --step
 ```
 
+There's a shell script that will run ansible playbook. Note: It's import to
+_source_ the file, since it will activate the python virtual environment.
+
+```
+source run.sh
+```
+
 # iTerm2
 
 ## Silence bell
@@ -94,7 +101,7 @@ for Powerline.
 ## TODO
 * Add a passphrase to the ssh-keygen
 * Add ssh-key to ssh-agent
-* Move global git config to dotfiles repo
+* Remove git setup from playbook, rely on dotfiles repo
 * Use uri module instead of curl for github key
 * Add ability to ask for sudo password at beginning of run
 * Vim plugin installation
@@ -105,4 +112,9 @@ for Powerline.
 * Improve nvm installation. Add nvm load in bashrc.
 * Install global yarn/npm packages
 * ncu (npm check update)
-
+* Deprecation warning for installing multiple brew packages within a loop
+* Add note about checking against github's ssh fingerprint. Details [here](https://help.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints).
+* When symlinking dotfile, check for existing and gracefully replace
+* When symlinking vscode settings for the first time, settings files do not exist and the symlink fails.
+* Symlinking deprecation warning: need to specify hard or link
+* Set default node version to erbium
