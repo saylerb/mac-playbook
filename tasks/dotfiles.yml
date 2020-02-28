@@ -62,12 +62,16 @@
     depth: 1
     dest: ~/fonts
   register: fonts_download
+  tags:
+    - fonts
 
 - name: check if fonts are already installed
   find:
     paths: ~/Library/Fonts
     patterns: "*.ttf"
   register: font_files
+  tags:
+    - fonts
 
 - name: install the fonts
   command: ./install.sh
@@ -75,9 +79,14 @@
     chdir: ~/fonts
   when:
     - font_files.matched|int == 0
-    - fonts_download|success
+    - fonts_download is succeeded
+  tags:
+    - fonts
 
 - name: download iterm2 color profile
   get_url:
     url: https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/iterm2/gruvbox-dark.itermcolors
     dest: ~/Downloads/
+  tags:
+    - fonts
+
