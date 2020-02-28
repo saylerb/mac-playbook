@@ -1,27 +1,9 @@
 # !/usr/bin/env bash
 
-# Install Command Line Tools without GUI prompt, required for pip to install ansible
+# To correctly run this file, source it (python venv is created)
+# . ./bootstrap.sh
 
-touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-PROD=$(softwareupdate -l |
-  grep "\*.*Command Line" |
-  head -n 1 | awk -F"*" '{print $2}' |
-  sed -e 's/^ *//' |
-  tr -d '\n')
-softwareupdate -i "$PROD" --verbose;
-
-# End of Command Line Tools Script
-
-if [ ! `which pip`]
-then
-    echo "Installing pip..."
-    sudo easy_install pip
-fi
-
-sudo pip install --upgrade
-sudo pip install ansible==2.3.2.0
-
-# Avoid prompt to continue by redirecting stdin from /dev/null
+# Homebrew installs macOS command line tools automatically now, with python3
 if [ ! `which brew` ]
 then
     echo "Installing Homebrew..."
@@ -30,9 +12,19 @@ then
       </dev/null
 fi
 
-# verify that Command Line Tools are correctly installed
-# xcode-select -p
-# should output /Library/Developer/CommandLineTools
+# Create and source the virtual environment
+if [ -d "./venv" ]
+then
+    echo "venv directory exists, skipping creation"
+else
+    echo "Creating virtual environment..."
+    virtualenv venv
+fi
 
-# which pip
-# which ansible
+if [ ! `which ansible`]
+then
+    echo "activating venv..."
+    source venv/bin/activate
+    echo "Installing ansible within virtual environment..."
+    pip install ansible
+fi
