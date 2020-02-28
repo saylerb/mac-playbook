@@ -6,6 +6,9 @@
     email: "{{ lookup('env', 'EMAIL') }}"
     user: "{{ lookup('env', 'USER') }}"
     github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
+    computer_name_full:
+      stdout: will be overriden below
+    computer_name_output: "{{ computer_name_full.stdout }}"
   vars_files:
     - vars.yml
     - vault.yml
@@ -33,6 +36,11 @@
       list_all: yes
       scope: global
 
+  - name: save computer name to variable
+    command: "scutil --get HostName"
+    register: computer_name_full
+  - debug: msg="{{ computer_name_output }}"
+
   - name: save public key to variable
     set_fact:
       public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
@@ -43,7 +51,7 @@
     shell: |
       curl -H "Content-Type: application/json"\
            -H "Authorization: token $GITHUB_API_TOKEN"\
-           --data '{"title":"mac-ansible-token", "key":"'"{{ public_key }}"'"}'\
+           --data '{"title":"'"{{ computer_name_output }}"'", "key":"'"{{ public_key }}"'"}'\
            https://api.github.com/user/keys
     tags:
       - github
