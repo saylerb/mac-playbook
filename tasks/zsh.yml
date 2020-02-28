@@ -1,28 +1,37 @@
 ---
-  - name: make sure zsh version is greater than 4.3.9
-    shell: zsh --version | cut -d ' ' -f2
-    register: result
-    changed_when: "false"
-
-  - assert:
-      that: result | version_compare ('4.3.9', '>=')
-      msg: "zsh must be greater or equal to 4.3.9"
-
-  - name: make zsh the default shell
-    shell: chsh -s /bin/zsh
-
-  - name: assert that default shell is zsh
-    shell: >
-      dscl . -read /Users/{{ user }} UserShell |
-      awk '{ gsub("UserShell: ", "") ; print $0 }'
-    register: result
-
-  - assert:
-      that: result.stdout == "/bin/zsh"
-
-  - name: check if ~/.zshrc exists
-    stat:
-      path: ~/.zshrc
-    register: zshrc
-    tags:
-      - zsh
+- name: make sure zsh version is greater than 4.3.9
+  shell: zsh --version | cut -d ' ' -f2
+  register: result
+  changed_when: "false"
+  tags:
+    - zsh
+- debug:
+    msg: "{{ result.stdout }}"
+  tags:
+    - zsh
+- assert:
+    that: result.stdout is version('4.3.9', '>=')
+    msg: "zsh must be greater or equal to 4.3.9"
+  tags:
+    - zsh
+- name: make zsh the default shell
+  shell: chsh -s /bin/zsh
+  tags:
+    - zsh
+- name: assert that default shell is zsh
+  shell: >
+    dscl . -read /Users/{{ user }} UserShell |
+    awk '{ gsub("UserShell: ", "") ; print $0 }'
+  register: result
+  tags:
+    - zsh
+- assert:
+    that: result.stdout == "/bin/zsh"
+  tags:
+    - zsh
+- name: check if ~/.zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: zshrc
+  tags:
+    - zsh
