@@ -62,6 +62,11 @@
   tags:
     - nvm
 
+- name: install erbium LTS
+  shell: source ~/.zshrc && nvm install --lts=erbium
+  tags:
+    - nvm
+
 - name: update npm
   shell: source ~/.zshrc && npm install -g npm
   tags:
