@@ -2,7 +2,7 @@
 
 - name: untap caskroom so we can install adoptopenjdk
   homebrew_tap:
-    name: caskroom/versions
+    name: homebrew/cask-versions
     state: absent
   tags: java
 
@@ -14,16 +14,6 @@
 - name: install adoptopenjdk8
   homebrew_cask:
     name: adoptopenjdk8
-
-- name: tap caskroom so we can install pre-built binaries
-  homebrew_tap:
-    name: caskroom/versions
-  tags: java
-
-- name: install lastest oracle java JDK
-  homebrew_cask:
-    name: java
-    state: present
   tags: java
 
 - name: install java homebrew packages
