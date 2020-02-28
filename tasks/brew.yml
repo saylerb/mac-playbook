@@ -76,7 +76,7 @@
     - httpie
     - vim
     - elm
-    - python@2
+    #- python@2
     - heroku
     - postgres
     - circleci
