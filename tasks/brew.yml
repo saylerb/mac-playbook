@@ -64,6 +64,7 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - stern
     - fzf
     - tmux
     - exercism
@@ -84,6 +85,7 @@
     - terraform
     - vault
     - yamllint
+    - kubectx
   tags:
     - packages
     - homebrew
