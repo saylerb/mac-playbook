@@ -104,6 +104,13 @@
     - exercism
     - homebrew
 
+- name: create workspace with work directory
+  file:
+    path: ~/workspace/work
+    state: directory
+  tags:
+    - exercism
+    - homebrew
 
 - name: configure exercism api key
   command: exercism configure --token={{ exercism_api_key }} --workspace=~/workspace/personal/exercism
