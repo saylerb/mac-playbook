@@ -2,10 +2,6 @@
 - hosts: local
   gather_facts: false
   vars:
-    full_name:  "{{ lookup('env', 'NAME') }}"
-    email: "{{ lookup('env', 'EMAIL') }}"
-    user: "{{ lookup('env', 'USER') }}"
-    github_key: "{{ lookup('env', 'GITHUB_API_TOKEN') }}"
     computer_name_full:
       stdout: will be overriden below
     computer_name_output: "{{ computer_name_full.stdout }}"
@@ -14,50 +10,31 @@
     - vault.yml
 
   tasks:
-  - name: generate an shh key
-    command: ssh-keygen -t rsa -b 4096 -C {{ email }} -N "" -f ~/.ssh/id_rsa
+  - name: generate an shh key for github
+    command: ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_github_rsa
     args:
-      creates: ~/.ssh/id_rsa
-
-  - name: getup global git config
-    git_config:
-      name: user.name
-      scope: global
-      value: "{{ full_name }}"
-
-  - name:
-    git_config:
-      name: core.editor
-      scope: global
-      value: /usr/bin/vim
-
-  - name: list out global git config
-    git_config:
-      list_all: yes
-      scope: global
+      creates: ~/.ssh/id_github_rsa
+    tags:
+      - github
 
   - name: save computer name to variable
     command: "scutil --get HostName"
     register: computer_name_full
-  - debug: msg="{{ computer_name_output }}"
-
-  - name: save public key to variable
-    set_fact:
-      public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     tags:
       - github
 
   - name: add public key to github
-    shell: |
-      curl -H "Content-Type: application/json"\
-           -H "Authorization: token $GITHUB_API_TOKEN"\
-           --data '{"title":"'"{{ computer_name_output }}"'", "key":"'"{{ public_key }}"'"}'\
-           https://api.github.com/user/keys
-    tags:
-      - github
+    uri:
+      url: https://api.github.com/user/keys
+      headers:
+        Authorization: "token {{ github_api_key }}"
+      method: POST
+      body: "{\"title\": \"{{ computer_name_output }}\", \"key\": \"{{ lookup('file', '~/.ssh/id_github_rsa.pub') }}\"}"
+      body_format: json
+      status_code: 201
 
-  - include: tasks/brew.yml
   - include: tasks/dotfiles.yml
+  - include: tasks/brew.yml
   - include: tasks/zsh.yml
 
   - include_role:
