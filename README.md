@@ -94,6 +94,12 @@ Playbook should install patched powerline fonts automatically. Go to iterm2
 Preferences -> Profiles -> Text -> Change Font and select any of the fonts
 for Powerline.
 
+## Natural Text Editing
+
+- Go to Preferences... > Profiles > Keys (not Preferences... > Keys)
+- Press Presets...
+- Select Natural Text Editing
+
 ## Clipboard
 * Can now remove `reattach-to-user-namespace`
 * Must enable "Applications in terminal may access clipboard" in iTerm2
@@ -118,3 +124,4 @@ for Powerline.
 * When symlinking vscode settings for the first time, settings files do not exist and the symlink fails.
 * Symlinking deprecation warning: need to specify hard or link
 * Set default node version to erbium
+* Add personal and work gitconfig to script
