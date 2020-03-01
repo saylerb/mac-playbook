@@ -7,36 +7,30 @@ setup.  I wanted to learn how to use Ansible playbooks, and wanted something
 that was idempotent for running my mac setup. My goal here is to do both: to
 learn the different modules available while creating something useful to me.
 
-## Downloading Ansible
+## Installing Ansible
 
 In order to use the Playbook to provision your machine, you'll need to have
 Ansible installed. There's a simple bash script `bootstrap.sh` which will
-automate the installation using Python's package manager. This script is not
-executable, you can run it with the command `sh bootstrap.sh`.
-
-## Required additional setup
-
-Run the commands below to execute:
-
-The playbook requires the following ENV variables to be defined to set up a
-global git config:
+automate the installation creating a virtual Python environment.
 
 ```bash
-export NAME=your_name_here
-export EMAIL=your_email_here
+./bootstrap.sh
 ```
+
+## Required additional setup
 
 To automatically generate and setup ssh keys for github, the playbook needs a
 github api token. Go to github settings > developer settings > personal access
 tokens and generate one. When generating a new key, make sure to select the
 correct scopes. For example, if you want to programmically add a public key to
 github, check the `admin:public_key` scope. When you're done, copy the API key
-to your clipboard.  Then run the command below to add the key to an environment
-variable so the ansible script can read it out:
+to your clipboard.  Edit encrypted vault file so the ansible script can read it
+out:
 
-```bash
-export GITHUB_API_TOKEN=`pbpaste`
 ```
+ansible-vault edit vault.yml
+```
+When done, you can delete the existing api key in github.
 
 #### Ansible vault
 
@@ -73,10 +67,10 @@ ansible-playbook main.yml -i hosts.ini --ask-vault-pass --tags="packages, brew" 
 ```
 
 There's a shell script that will run ansible playbook. Note: It's import to
-_source_ the file, since it will activate the python virtual environment.
+_source_ the file if the Python virtual environment is not already activated. 
 
 ```
-source run.sh
+source run.sh [tags]
 ```
 
 # iTerm2
@@ -105,9 +99,7 @@ for Powerline.
 * Must enable "Applications in terminal may access clipboard" in iTerm2
 
 ## TODO
-* Add a passphrase to the ssh-keygen
 * Add ssh-key to ssh-agent
-* Remove git setup from playbook, rely on dotfiles repo
 * Use uri module instead of curl for github key
 * Add ability to ask for sudo password at beginning of run
 * Vim plugin installation
