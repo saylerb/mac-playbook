@@ -86,6 +86,7 @@
     - vault
     - yamllint
     - kubectx
+    - jq
   tags:
     - packages
     - homebrew
