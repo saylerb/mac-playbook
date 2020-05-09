@@ -87,6 +87,7 @@
     - yamllint
     - kubectx
     - jq
+    - watchman
   tags:
     - packages
     - homebrew
