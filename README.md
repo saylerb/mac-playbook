@@ -94,6 +94,12 @@ for Powerline.
 - Press Presets...
 - Select Natural Text Editing
 
+# Open same directory on splitting panes
+
+- Got to Preferences... > Profiles > General > Working Directory > Select the
+  "Advanced Configuration" radio button > Select "Reuse previous session
+directoy" under "Working Directory for New Split Pane"
+
 ## Clipboard
 * Can now remove `reattach-to-user-namespace`
 * Must enable "Applications in terminal may access clipboard" in iTerm2
@@ -106,7 +112,7 @@ for Powerline.
   * When running Vundle's plugin install, it exits with error code 1
   * Currently doing an `ignore_error`, but need to find a way around this
   * Maybe us Plug instead of Vundle
-* Automate installation of color profile for iTerm
+* Automate iTerm settings above
 * Improve nvm installation. Add nvm load in bashrc.
 * Install global yarn/npm packages
 * ncu (npm check update)
