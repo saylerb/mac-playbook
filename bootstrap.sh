@@ -1,4 +1,5 @@
 # !/usr/bin/env bash
+set -e
 
 # True if $1 is an executable in $PATH
 # Works in both {ba,z}sh
