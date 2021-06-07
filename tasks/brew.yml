@@ -35,7 +35,9 @@
     - flux
     - microsoft-teams
     - font-fira-code
+    - font-dejavu-sans-mono-nerd-font
     - zoomus
+    - starship
     - aws-vault
   tags:
     - casks
