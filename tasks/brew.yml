@@ -48,16 +48,17 @@
     - casks
     - homebrew
 
-#- name: install vagrant casks
-#  homebrew_cask:
-#    name: "{{ item }}"
-#    state: present
-#  with_items:
-#    - virtualbox
-#    - vagrant
-#    - vagrant-manager
-#  tags:
-#    - casks
+- name: install vagrant casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - virtualbox
+    - vagrant
+    - vagrant-manager
+  tags:
+    - casks
+    - vagrant
 
 - name: install homebrew packages
   homebrew:
@@ -88,6 +89,10 @@
     - kubectx
     - jq
     - watchman
+    - chef/chec/inspec
+    - chamber
+    - kubernetes-helm
+
   tags:
     - packages
     - homebrew

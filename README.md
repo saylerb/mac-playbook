@@ -123,3 +123,4 @@ directoy" under "Working Directory for New Split Pane"
 * Symlinking deprecation warning: need to specify hard or link
 * Set default node version to erbium
 * Add personal and work gitconfig to script
+* New installation needed for oh-my-zsh?
