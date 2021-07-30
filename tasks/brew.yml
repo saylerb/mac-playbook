@@ -38,7 +38,6 @@
     - font-dejavu-sans-mono-nerd-font
     - zoomus
     - starship
-    - aws-vault
   tags:
     - casks
     - homebrew
@@ -72,6 +71,7 @@
     - tmux
     - exercism
     - awscli
+    - aws-vault
     - aws-iam-authenticator
     - tree
     - antigen
@@ -79,21 +79,23 @@
     - httpie
     - vim
     - elm
-    #- python@2
     - heroku
     - postgres
     - circleci
+    - chef/chec/inspec
     - hadolint
+    - yamllint
     - kubernetes-cli
+    - kubectx
+    - kubernetes-helm
     - terraform
     - vault
-    - yamllint
-    - kubectx
+    - chamber
     - jq
     - watchman
-    - chef/chec/inspec
-    - chamber
-    - kubernetes-helm
+    - autojump
+    - ag
+    - watch
 
   tags:
     - packages
