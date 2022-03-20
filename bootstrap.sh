@@ -11,6 +11,14 @@ function is_bin_in_path {
   fi
 }
 
+if is_bin_in_path virtualenv
+then
+    echo "virtualenv is installed"
+else
+    echo "installing virtualenv"
+    python -m pip install --user virtualenv
+fi
+
 # Homebrew installs macOS command line tools automatically now
 if is_bin_in_path brew
 then
@@ -27,7 +35,7 @@ then
     echo "venv directory exists, skipping creation"
 else
     echo "Creating virtual environment..."
-    virtualenv venv
+    python -m virtualenv venv
 fi
 
 echo "activating venv..."
@@ -47,7 +55,7 @@ else
      echo "ansible not installed, activating venv..."
      source venv/bin/activate
      echo "Installing ansible within virtual environment..."
-     pip install ansible
+     pip install 'ansible==2.6.1'
 fi
 
 echo "complete! use source ./venv/bin/activate to enter virtual environment"
