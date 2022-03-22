@@ -18,7 +18,7 @@
       - github
 
   - name: save computer name to variable
-    command: "scutil --get HostName"
+    command: "scutil --get ComputerName"
     register: computer_name_full
     tags:
       - github
