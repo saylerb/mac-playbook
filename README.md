@@ -22,7 +22,7 @@ automate the installation creating a virtual Python environment.
 To automatically generate and setup ssh keys for github, the playbook needs a
 github api token. Go to github settings > developer settings > personal access
 tokens and generate one. When generating a new key, make sure to select the
-correct scopes. For example, if you want to programmically add a public key to
+correct scopes. For example, if you want to programmatically add a public key to
 github, check the `admin:public_key` scope. When you're done, copy the API key
 to your clipboard.  Edit encrypted vault file so the ansible script can read it
 out:
