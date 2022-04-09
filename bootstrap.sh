@@ -53,8 +53,9 @@ then
 else
      echo "ansible not installed, activating venv..."
      source .venv/bin/activate
-     echo "Installing ansible within virtual environment..."
-     pip install 'ansible==2.6.1'
+     ansible_community_version=$(cat .ansible-version)
+     echo "Installing ansible $ansible_community_version within virtual environment..."
+     pip install ansible==$ansible_community_version
 fi
 
 echo "complete! use source ./venv/bin/activate to enter virtual environment"
