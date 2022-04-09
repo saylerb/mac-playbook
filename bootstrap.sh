@@ -26,7 +26,7 @@ then
     echo "virtualenv is installed"
 else
     echo "installing virtualenv"
-    python -m pip install --user virtualenv
+    python3 -m pip install --user virtualenv
 fi
 
 if [ -d "./.venv" ]
@@ -34,7 +34,7 @@ then
     echo "venv directory exists, skipping creation"
 else
     echo "Creating virtual environment..."
-    python -m virtualenv .venv
+    python3 -m virtualenv .venv
 fi
 
 echo "activating venv..."
