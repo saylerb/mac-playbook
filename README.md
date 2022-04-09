@@ -3,15 +3,15 @@
 This is Ansible playbook for bootstrapping my mac!
 
 There are many tools out there for provisioning machines and scripting a mac
-setup.  I wanted to learn how to use Ansible playbooks, and wanted something
-that was idempotent for running my mac setup. My goal here is to do both: to
-learn the different modules available while creating something useful to me.
+setup, this repo is intended to be an idempotent script for installing all
+applications and tools for my development environment.
 
-## Installing Ansible
+## Installing Prerequisites
 
-In order to use the Playbook to provision your machine, you'll need to have
-Ansible installed. There's a simple bash script `bootstrap.sh` which will
-automate the installation creating a virtual Python environment.
+In order to use the Playbook to provision your macOS machine, you'll first need
+to have Homebrew, Command Line Tools, Python, and Ansible installed. There's a
+simple bash script `bootstrap.sh` which will automate the installation creating
+of these prerequisites, as well as creating a virtual Python environment.
 
 ```bash
 ./bootstrap.sh
