@@ -58,5 +58,5 @@ else
      pip install ansible==$ansible_community_version
 fi
 
-echo "complete! use source ./venv/bin/activate to enter virtual environment"
+echo "complete! use source ./.venv/bin/activate to enter virtual environment"
 
