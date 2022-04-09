@@ -25,9 +25,8 @@ then
      echo "brew already installed"
 else
     echo "Installing Homebrew..."
-    ruby \
-      -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
-      </dev/null
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if [ -d "./venv" ]
