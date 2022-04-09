@@ -34,9 +34,15 @@
   tags:
     - links
 
+- name: create vscode settings directory if it does not exist
+  file:
+    path: ~/Library/Application Support/Code/User
+    state: directory
+  tags:
+    - links
+
 - name: remove vscode settings if they exist
   file:
-    src: ~/dotfiles/vscode/{{ item }}
     path: ~/Library/Application Support/Code/User/{{ item }}
     state: absent
   with_items:
