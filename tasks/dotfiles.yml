@@ -16,6 +16,7 @@
   git:
     repo: git@github.com:saylerb/dotfiles.git
     dest: ~/dotfiles
+    key_file: ~/.ssh/id_github_rsa
 
 - name: symlink dotfiles to home directory
   file:
