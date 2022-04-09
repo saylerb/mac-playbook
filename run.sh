@@ -1,7 +1,7 @@
 name=$1
 
 # Activate python virtual environment
-source venv/bin/activate
+source .venv/bin/activate
 
 if [[ -n "$name" ]]; then
     ansible-playbook main.yml \
