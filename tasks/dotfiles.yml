@@ -34,6 +34,17 @@
   tags:
     - links
 
+- name: symlink dotfiles to ~/.config directory
+  file:
+    src: ~/dotfiles/{{ item }}
+    dest: ~/.config/{{ item }}
+    mode: '0644'
+    state: link
+  with_items:
+    - starship.toml
+  tags:
+    - links
+
 - name: create vscode settings directory if it does not exist
   file:
     path: ~/Library/Application Support/Code/User
