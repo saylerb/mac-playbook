@@ -21,20 +21,12 @@ else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if is_bin_in_path virtualenv
-then
-    echo "virtualenv is installed"
-else
-    echo "installing virtualenv"
-    python3 -m pip install --user virtualenv
-fi
-
 if [ -d "./.venv" ]
 then
-    echo "venv directory exists, skipping creation"
+    echo ".venv directory exists, skipping creation"
 else
     echo "Creating virtual environment..."
-    python3 -m virtualenv .venv
+    python3 -m venv .venv
 fi
 
 echo "activating venv..."
