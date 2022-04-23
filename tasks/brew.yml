@@ -36,8 +36,7 @@
     - microsoft-teams
     - font-fira-code
     - font-dejavu-sans-mono-nerd-font
-    - zoomus
-    - starship
+    - zoom
   tags:
     - casks
     - homebrew
@@ -66,6 +65,8 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - colima
+    - starship
     - stern
     - fzf
     - tmux
@@ -96,7 +97,6 @@
     - autojump
     - ag
     - watch
-
   tags:
     - packages
     - homebrew
