@@ -20,7 +20,7 @@
     - zsh
 - name: assert that default shell is zsh
   shell: >
-    dscl . -read /Users/{{ user }} UserShell |
+    dscl . -read /Users/$USER UserShell |
     awk '{ gsub("UserShell: ", "") ; print $0 }'
   register: result
   tags:
