@@ -27,13 +27,11 @@
     - spectacle
     - spotify
     - intellij-idea
-    - webstorm
     - visual-studio-code
     - postman
     - slack
     - whatsapp
     - flux
-    - microsoft-teams
     - font-fira-code
     - font-dejavu-sans-mono-nerd-font
     - zoom
@@ -80,7 +78,7 @@
     - httpie
     - vim
     - elm
-    - heroku
+      # - heroku
     - postgres
     - circleci
     - chef/chec/inspec

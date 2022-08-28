@@ -1,0 +1,42 @@
+---
+
+- name: install go
+  homebrew:
+    name: go
+    state: present
+  tags:
+    - go
+- name: install golangci-lint
+  homebrew:
+    name: golangci-lint
+    state: present
+  tags:
+    - go
+- name: install gopls
+  shell: go install -v golang.org/x/tools/gopls@latest
+  tags:
+    - go
+- name: install go-outline
+  shell: go install -v github.com/ramya-rao-a/go-outline@latest
+  tags:
+    - go
+- name: install goimports
+  shell: go install -v golang.org/x/tools/cmd/goimports@latest
+  tags:
+    - go
+- name: install go debugger
+  shell: go install github.com/go-delve/delve/cmd/dlv@latest
+  tags:
+    - go
+- name: install go doc
+  shell: go install golang.org/x/tools/cmd/godoc@latest
+  tags:
+    - go
+- name: install go doctor
+  shell: go install -v github.com/godoctor/godoctor@latest
+  tags:
+    - go
+- name: install staticheck
+  shell: shell go install honnef.co/go/tools/cmd/staticcheck@latest
+  tags:
+    - go

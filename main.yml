@@ -57,3 +57,7 @@
       name: python
     tags:
       - python
+  - include_role:
+      name: go
+    tags:
+      - go
