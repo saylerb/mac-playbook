@@ -37,6 +37,10 @@
   tags:
     - go
 - name: install staticheck
-  shell: shell go install honnef.co/go/tools/cmd/staticcheck@latest
+  shell: go install honnef.co/go/tools/cmd/staticcheck@latest
+  tags:
+    - go
+- name: install errcheck
+  shell: go install github.com/kisielk/errcheck@latest
   tags:
     - go
