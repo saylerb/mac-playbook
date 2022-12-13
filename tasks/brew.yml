@@ -35,6 +35,7 @@
     - font-fira-code
     - font-dejavu-sans-mono-nerd-font
     - zoom
+    - keybase
   tags:
     - casks
     - homebrew
@@ -58,43 +59,79 @@
     - casks
     - vagrant
 
+- name: install chef
+  homebrew:
+    name: chef/chef/inspec
+    state: present
+  tags:
+    - packages
+    - homebrew
+    - inspec
+
+
+
 - name: install homebrew packages
   homebrew:
     name: "{{ item }}"
     state: present
   with_items:
-    - colima
-    - starship
-    - stern
-    - fzf
-    - tmux
-    - exercism
+    # cloud vendors
     - awscli
     - aws-vault
     - aws-iam-authenticator
+    - eksctl
+    - chamber
+
+    # cloud dev
+    - colima
+    - minikube
+    - kubernetes-cli
+    - kubectx
+    - krew
+    - sonobuoy
+    - skaffold
+    - helm
+    - stern
+    - txn2/tap/kubefwd
+    - 1password/tap/1password-cli
+    - kubeval
+    - terraform
+    - terraform-docs
+    - tflint
+    - istioctl
+    - hadolint
+    - yamllint
+    - pulumi
+
+    # dev tools
+    - vim
+    - starship
+    - fzf
+    - tmux
+    - exercism
     - tree
     - antigen
     - hub
     - httpie
-    - vim
-    - elm
-      # - heroku
-    - postgres
+      # - postgres
     - circleci
-    - chef/chec/inspec
-    - hadolint
-    - yamllint
-    - kubernetes-cli
-    - kubectx
-    - kubernetes-helm
-    - terraform
     - vault
-    - chamber
     - jq
     - watchman
     - autojump
     - ag
     - watch
+    - gsed
+    - gnupg
+    - cosign
+    - talisman
+    - hostess
+    - lima
+    - pre-commit
+
+    # lang
+    - elm
+
   tags:
     - packages
     - homebrew
