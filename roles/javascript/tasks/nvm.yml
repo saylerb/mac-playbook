@@ -45,29 +45,16 @@
   tags:
     - nvm
 
-- name: source the nvm script to load
-  shell: . ./nvm.sh
+- name: install gallium LTS
+  shell: . ./nvm.sh && nvm install --lts=gallium
   args:
     chdir: "{{ nvm_dir }}"
   tags:
     - nvm
 
-- name: install carbon LTS
-  shell: source ~/.zshrc && nvm install --lts=carbon
-  tags:
-    - nvm
-
-- name: install dubnium LTS
-  shell: source ~/.zshrc && nvm install --lts=dubnium
-  tags:
-    - nvm
-
-- name: install erbium LTS
-  shell: source ~/.zshrc && nvm install --lts=erbium
-  tags:
-    - nvm
-
 - name: update npm
-  shell: source ~/.zshrc && npm install -g npm
+  shell: . ./nvm.sh && npm install -g npm
+  args:
+    chdir: "{{ nvm_dir }}"
   tags:
     - nvm

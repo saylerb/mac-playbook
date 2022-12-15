@@ -1,14 +1,29 @@
 ---
+- name: get npm executable location
+  shell: . ./nvm.sh && which npm
+  args:
+    chdir: ~/.nvm
+  register: nvm_executable
+  tags:
+    - npm
 
 - name: install global packages
   npm: 
     name: "{{ item }}"
     global: yes
+    executable: "{{ nvm_executable.stdout }}"
   with_items:
-    - gatsby-cli
     - canvas-sketch-cli
+    - prettier
+  tags:
+    - npm
+
+- name: install elm packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items:
     - elm-format
     - create-elm-app
-    - prettier
-  tags: 
-    - npm
+  tags:
+    - elm
