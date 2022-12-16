@@ -15,6 +15,7 @@
   with_items:
     - canvas-sketch-cli
     - prettier
+    - git-mob
   tags:
     - npm
 
