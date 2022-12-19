@@ -102,6 +102,7 @@
     - hadolint
     - yamllint
     - pulumi
+    - opa
 
     # dev tools
     - vim
