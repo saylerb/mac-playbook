@@ -106,6 +106,7 @@
 
     # dev tools
     - vim
+    - nvim
     - starship
     - fzf
     - tmux
@@ -114,7 +115,7 @@
     - antigen
     - hub
     - httpie
-      # - postgres
+    # - postgres
     - circleci
     - vault
     - jq
@@ -129,6 +130,7 @@
     - hostess
     - lima
     - pre-commit
+    - ripgrep
 
     # lang
     - elm
