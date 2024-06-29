@@ -39,6 +39,8 @@
 
   - include_role:
       name: ruby
+    tags:
+      - ruby
   - include_role:
       name: javascript
     tags:

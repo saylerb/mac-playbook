@@ -7,50 +7,51 @@
   with_items:
     - chruby
     - ruby-install
-
+  tags:
+    - ruby
 - name: source chruby in .bash_profile and .zshrc
   lineinfile:
     path: "{{ item }}"
     state: present
-    regexp: '\[ -f \/usr\/local\/opt\/chruby\/share\/chruby\/chruby\.sh \] \&\& source \/usr\/local\/opt\/chruby\/share\/chruby\/chruby\.sh'
-    line: '[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh'
+    regexp: '\[ -f "\$\{HOMEBREW_PREFIX\}\/opt\/chruby\/share\/chruby\/chruby\.sh" \] \&\& \$\{HOMEBREW_PREFIX\}\/opt\/chruby\/share\/chruby\/chruby\.sh'
+    line: '[ -f "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh" ] && source ${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh'
   with_items:
     - ~/.zshrc
     - ~/.bash_profile
   tags:
     - chruby
-
-- name: source chruby auto in .bash_profile and .zshrc
-  lineinfile:
-    path: "{{ item }}"
-    state: present
-    regexp: '\[ -f \/usr\/local\/opt\/chruby\/share\/chruby\/auto\.sh \] \&\& source \/usr\/local\/opt\/chruby\/share\/chruby\/auto\.sh'
-    line: '[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && source /usr/local/opt/chruby/share/chruby/auto.sh'
-  with_items:
-    - ~/.zshrc
-    - ~/.bash_profile
-  tags:
-    - chruby
+    - ruby
 
 - name: get ruby version from dotfile
   set_fact:
     global_ruby_version: "{{ lookup('file', '~/.ruby-version') }}"
+  tags:
+    - ruby
 
 - name: check if already installed
   stat:
     path: ~/.rubies/{{ global_ruby_version }}
   register: check_if_ruby_installed_result
+  tags:
+    - ruby
 
 - debug:
     msg: "About to install ruby {{ global_ruby_version.split('-')[-1] }}. This might take a while"
   when: check_if_ruby_installed_result.stat.exists == False
+  tags:
+    - ruby
 
 - name: install ruby version
   command: ruby-install ruby {{ global_ruby_version.split('-')[-1] }}
   args:
     creates: ~/.rubies/{{ global_ruby_version }}
+  tags:
+    - ruby
 
 - name: check global ruby version directory exists
   stat:
     path: ~/.rubies/{{ global_ruby_version }}
   register: ruby_global_dir
+  tags:
+    - ruby
+
