@@ -24,14 +24,11 @@
     - dropbox
     - 1password
     - alfred
-    - spectacle
     - spotify
     - intellij-idea
     - visual-studio-code
-    - postman
     - slack
     - whatsapp
-    - flux
     - font-fira-code
     - font-dejavu-sans-mono-nerd-font
     - zoom
@@ -67,8 +64,6 @@
     - packages
     - homebrew
     - inspec
-
-
 
 - name: install homebrew packages
   homebrew:
@@ -115,7 +110,7 @@
     - antigen
     - hub
     - httpie
-    # - postgres
+
     - circleci
     - vault
     - jq
@@ -131,9 +126,6 @@
     - lima
     - pre-commit
     - ripgrep
-
-    # lang
-    - elm
 
   tags:
     - packages
