@@ -18,21 +18,30 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - iterm2
-    - google-chrome
-    - firefox
-    - dropbox
     - 1password
+    - 1password-cli
     - alfred
-    - spotify
-    - intellij-idea
-    - visual-studio-code
-    - slack
-    - whatsapp
-    - font-fira-code
+    #- bruno
+    - discord
+    #- dropbox
+    - firefox
     - font-dejavu-sans-mono-nerd-font
-    - zoom
+    - font-fira-code
+    - google-chrome
+    - intellij-idea
+    - iterm2
     - keybase
+    - obsidian
+    # .net? - session-manager-plugin
+    - slack
+    - spotify
+    #- temurin17
+    #- temurin@17
+    - visual-studio-code
+    #- vmware-fusion
+    - whatsapp
+    - wireshark
+    - zoom
   tags:
     - casks
     - homebrew
@@ -89,7 +98,6 @@
     - stern
     - txn2/tap/kubefwd
     - 1password/tap/1password-cli
-    - kubeval
     - terraform
     - terraform-docs
     - tflint
