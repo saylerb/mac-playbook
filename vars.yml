@@ -1,1 +1,2 @@
 exercism_api_key: "{{ vault_exercism_api_key }}"
+ansible_python_interpreter: "{{ ansible_playbook_python }}"
