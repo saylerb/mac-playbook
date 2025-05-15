@@ -33,9 +33,9 @@
       body_format: json
       status_code: 201
 
-  - include: tasks/dotfiles.yml
-  - include: tasks/brew.yml
-  - include: tasks/zsh.yml
+  - include_tasks: tasks/dotfiles.yml
+  - include_tasks: tasks/brew.yml
+  - include_tasks: tasks/zsh.yml
 
   - include_role:
       name: ruby

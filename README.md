@@ -33,7 +33,7 @@ ansible-vault edit vault.yml
 When done, you can delete the existing API key in GitHub.
 
 #### Ansible vault
-[
+
 Currently I'm using Ansible vault to store some encrypted keys. To run the
 playbook, save the password in a single-line file in the working directory as
 `vault_pass.txt`.  To run the Ansible playbook to provision your mac, run the
