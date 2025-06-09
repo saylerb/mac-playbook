@@ -90,19 +90,25 @@ for Powerline.
 
 ## Natural Text Editing
 
-- Go to Preferences... > Profiles > Keys (not Preferences... > Keys)
+- Go to Preferences... > Profiles > Keys > Key Bindings (not Preferences... > Keys)
 - Press Presets...
 - Select Natural Text Editing
 
-# Open same directory on splitting panes
+## Unlimited Scrollback
 
-- Got to Preferences... > Profiles > General > Working Directory > Select the
+- Go to Profiles > Terminal > Check "Unlimited Scrollback"
+
+## Open same directory on splitting panes
+
+- Go to Preferences... > Profiles > General > Initial Directory > Select the
   "Advanced Configuration" radio button > Select "Reuse previous session
-directory" under "Working Directory for New Split Pane"
+  directory" under "Working Directory for New Split Pane"
 
 ## Clipboard
-* Can now remove `reattach-to-user-namespace`
 * Must enable "Applications in terminal may access clipboard" in iTerm2
+
+## Remove mark indicators
+* Profiles > Terminal > Shell Integration > uncheck "Show mark indicators"
 
 ## TODO
 * Add ssh-key to ssh-agent
