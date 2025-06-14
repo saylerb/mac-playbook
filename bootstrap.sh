@@ -72,10 +72,10 @@ else
   echo "Failed to activate virtual env"
 fi
 
-if is_bin_in_path ansible; then
-  echo "ansible already installed, skipping"
+if [[ -f ".venv/bin/ansible" ]]; then
+  echo "ansible already installed in virtual environment, skipping"
 else
-  echo "ansible not installed, installing..."
+  echo "ansible not installed in virtual environment, installing..."
   source .venv/bin/activate
   python -m pip install --upgrade pip
   ansible_community_version=$(cat .ansible-version)
