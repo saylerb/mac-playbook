@@ -2,7 +2,7 @@
 
 - name: check .nvm dir exists
   stat:
-    path: ~/.nvm
+    path: ~/.config/nvm
   register: nvm_check
   tags:
     - nvm
@@ -10,7 +10,7 @@
 - name: clone down the nvm repo
   git:
     repo: https://github.com/creationix/nvm.git
-    dest: ~/.nvm
+    dest: ~/.config/nvm
     update: no
   when: not nvm_check.stat.exists
   tags:
@@ -18,7 +18,7 @@
 
 - name: check .nvm dir exists
   stat:
-    path: ~/.nvm
+    path: ~/.config/nvm
   register: nvm_check
   tags:
     - nvm
@@ -29,7 +29,7 @@
     - nvm
 
 - name: get latest tag name
-  shell: "git describe --abbrev=0 --tags --match 'v[0-9]*' origin"
+  shell: "git describe --abbrev=0 --tags --match 'v[0-9]*' $(git rev-list --tags --max-count=1)"
   args:
     chdir: "{{ nvm_dir }}"
   register: latest_tag
@@ -38,15 +38,15 @@
 
 - name: checkout latest nvm tag
   git:
-    repo: https://github.com/creationix/nvm.git
+    repo: https://github.com/nvm-sh/nvm.git
     dest: "{{ nvm_dir }}"
     version: "{{ latest_tag.stdout }}"
   when: not nvm_check.stat.exists
   tags:
     - nvm
 
-- name: install gallium LTS
-  shell: . ./nvm.sh && nvm install --lts=gallium
+- name: install node LTS
+  shell: . ./nvm.sh && nvm install --lts
   args:
     chdir: "{{ nvm_dir }}"
   tags:

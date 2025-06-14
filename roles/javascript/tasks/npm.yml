@@ -1,8 +1,8 @@
 ---
 - name: get npm executable location
-  shell: . ./nvm.sh && which npm
+  shell: . ./nvm.sh && nvm use --lts --silent && which npm
   args:
-    chdir: ~/.nvm
+    chdir: "~/.config/nvm"
   register: nvm_executable
   tags:
     - npm
@@ -13,18 +13,8 @@
     global: yes
     executable: "{{ nvm_executable.stdout }}"
   with_items:
-    - canvas-sketch-cli
     - prettier
     - git-mob
+    - "@openai/codex"
   tags:
     - npm
-
-- name: install elm packages
-  npm:
-    name: "{{ item }}"
-    global: yes
-  with_items:
-    - elm-format
-    - create-elm-app
-  tags:
-    - elm
