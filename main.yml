@@ -68,3 +68,7 @@
       name: go
     tags:
       - go
+  - include_role:
+      name: neovim
+    tags:
+      - neovim

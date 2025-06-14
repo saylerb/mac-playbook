@@ -1,0 +1,16 @@
+---
+- name: Ensure Neovim configuration directory exists
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: directory
+  tags:
+    - neovim
+
+- name: Clone Neovim configuration repository from GitHub
+  git:
+    repo: "https://github.com/saylerb/kickstart.nvim.git"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    version: master
+    force: yes
+  tags:
+    - neovim
