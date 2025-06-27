@@ -1,7 +1,0 @@
----
-
-docker_links:
-  - docker
-  - docker-compose
-  - docker-credential-osxkeychain
-  - docker-machine

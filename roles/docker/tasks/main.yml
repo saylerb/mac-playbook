@@ -1,23 +1,47 @@
 ---
 
-- name: install docker for mac
-  homebrew_cask:
+- name: install docker
+  homebrew:
     name: docker
     state: present
   tags:
     - docker
 
-- name: check if docker is symlinked
-  stat:
-    path: /usr/local/bin/{{ item }}
-  with_items: "{{ docker_links }}"
-  register: check_docker_links
+- name: install docker-compose
+  homebrew:
+    name: docker-compose
+    state: present
   tags:
     - docker
 
-- debug:
-    msg: "{{ item.item }} not linked. Open Docker.app to complete symlinking!"
-  with_items: "{{ check_docker_links.results }}"
-  when: item.stat.islnk is not defined
+- name: ensure jq is intalled
+  homebrew:
+    name: jq
+    state: present
   tags:
     - docker
+
+- name: ensure docker config directory exists
+  file:
+    path: ~/.docker
+    state: directory
+    mode: '0755'
+  tags:
+    - docker
+
+- name: create initial docker config if not exists
+  copy:
+    content: "{}"
+    dest: ~/.docker/config.json
+    force: no
+    mode: '0644'
+  tags:
+    - docker
+
+- name: configure docker cli plugins directory
+  shell: |
+    cp ~/.docker/config.json ~/.docker/config.json.bak
+    jq '. + {"cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"]}' ~/.docker/config.json.bak > ~/.docker/config.json
+  tags:
+    - docker
+
