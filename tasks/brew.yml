@@ -117,7 +117,7 @@
     - tree
     - antigen
     - hub
-    - httpie
+    - libpq # postgres tools
 
     - circleci
     - vault
