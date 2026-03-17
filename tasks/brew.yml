@@ -6,13 +6,6 @@
   tags:
     - homebrew
 
-- name: tap homebrew cask fonts
-  homebrew_tap:
-    name: homebrew/cask-fonts
-  tags:
-    - casks
-    - homebrew
-
 - name: install homebrew casks
   homebrew_cask:
     name: "{{ item }}"
@@ -28,7 +21,7 @@
     - font-dejavu-sans-mono-nerd-font
     - font-fira-code
     - google-chrome
-    - intellij-idea
+    - intellij-idea-ce
     - iterm2
     - keybase
     - obsidian
@@ -65,15 +58,23 @@
     - casks
     - vagrant
 
-- name: install chef
-  homebrew:
-    name: chef/chef/inspec
-    state: present
-  tags:
-    - packages
-    - homebrew
-    - inspec
-
+#- name: tap chef repository
+#  homebrew_tap:
+#    name: chef/chef
+#  tags:
+#    - casks
+#    - homebrew
+#    - inspec
+#
+#- name: install chef
+#  homebrew_cask:
+#    name: chef/chef/inspec
+#    state: present
+#  tags:
+#    - packages
+#    - homebrew
+#    - inspec
+#
 - name: install homebrew packages
   homebrew:
     name: "{{ item }}"
@@ -82,9 +83,7 @@
     # cloud vendors
     - awscli
     - aws-vault
-    - aws-iam-authenticator
     - eksctl
-    - chamber
 
     # cloud dev
     - colima
@@ -92,12 +91,10 @@
     - kubernetes-cli
     - kubectx
     - krew
-    - sonobuoy
     - skaffold
     - helm
     - stern
-    - txn2/tap/kubefwd
-    - 1password/tap/1password-cli
+    - 1password-cli
     - terraform
     - terraform-docs
     - tflint
@@ -120,7 +117,6 @@
     - libpq # postgres tools
 
     - circleci
-    - vault
     - jq
     - watchman
     - autojump
@@ -134,6 +130,8 @@
     - lima
     - pre-commit
     - ripgrep
+    # ai
+    - dolt
 
   tags:
     - packages

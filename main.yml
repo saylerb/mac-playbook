@@ -39,6 +39,9 @@
       - links
   - name: Install homebrew packages and such
     include_tasks: tasks/brew.yml
+    tags:
+      - homebrew
+      - casks
   - name: Setup Zsh
     include_tasks: tasks/zsh.yml
 
