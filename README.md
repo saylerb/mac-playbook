@@ -84,9 +84,8 @@ Open iTerm and go to Profiles -> Colors -> Color Presets -> import color.
 Then import the downloaded file e.g. `gruvbox-dark.itermcolors`
 
 ## Fonts
-Playbook should install patched Powerline fonts automatically. Go to iTerm2
-Preferences -> Profiles -> Text -> Change Font and select any of the fonts
-for Powerline.
+Playbook should install a Nerd font automatically. Go to iTerm2 Preferences ->
+Profiles -> Text -> Change Font and select one Nerd Font
 
 ## Natural Text Editing
 
@@ -130,3 +129,6 @@ for Powerline.
 * Set default node version to erbium
 * Add personal and work gitconfig to script
 * New installation needed for oh-my-zsh?
+* Ensure vim plugins are installed to ~/.config/vim instead of ~/.vim
+* Figure out what's going on with Chef inspec
+ 
