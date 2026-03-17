@@ -14,36 +14,43 @@
     key: "{{ github_key.stdout }}"
     path: "~/.ssh/known_hosts"
 
+- name: define source and dest
+  set_fact:
+    dotfiles_to_link:
+      - { source: '~/dotfiles/starship.toml', dest: '~/.config/starship.toml' }
+      - { source: '~/dotfiles/.vimrc', dest: '~/.config/vim/vimrc' }
+      - { source: '~/dotfiles/.tmux.conf', dest: '~/.config/tmux/tmux.conf' }
+      - { source: '~/dotfiles/.gitconfig', dest: '~/.config/git/config' }
+      - { source: '~/dotfiles/.bash_profile', dest: '~/.bash_profile' }
+      - { source: '~/dotfiles/.zshrc', dest: '~/.zshrc' }
+  tags:
+    - links
+
 - name: clone down dotfiles from github
   git:
     repo: git@github.com:saylerb/dotfiles.git
     dest: ~/dotfiles
     key_file: ~/.ssh/id_github_rsa
-
-- name: symlink dotfiles to home directory
-  file:
-    src: ~/dotfiles/{{ item }}
-    dest: ~/{{ item }}
-    mode: '0644'
-    state: link
-  with_items:
-    - .vimrc
-    - .tmux.conf
-    - .bash_profile
-    - .ruby-version
-    - .zshrc
-    - .gitconfig
   tags:
     - links
 
-- name: symlink dotfiles to ~/.config directory
+- name: ensure required directories exist
   file:
-    src: ~/dotfiles/{{ item }}
-    dest: ~/.config/{{ item }}
+    path: "{{ item.dest | dirname }}"
+    state: directory
+  loop:
+      "{{ dotfiles_to_link }}"
+  tags:
+    - links
+
+- name: symlink dotfiles to respective destinations
+  file:
+    src: "{{ item.source }}"
+    dest: "{{ item.dest }}"
     mode: '0644'
     state: link
-  with_items:
-    - starship.toml
+  loop:
+    "{{ dotfiles_to_link }}"
   tags:
     - links
 
