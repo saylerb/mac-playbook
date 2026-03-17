@@ -1,24 +1,7 @@
 ---
 
-- name: untap caskroom so we can install adoptopenjdk
-  homebrew_tap:
-    name: homebrew/cask-versions
-    state: absent
-  tags: java
-
-- name: tap adoptopenjdk repository
-  homebrew_tap:
-    name: adoptopenjdk/openjdk
-  tags: java
-
-- name: install adoptopenjdk8
+- name: install temurin8
   homebrew_cask:
-    name: adoptopenjdk8
-  tags: java
-
-- name: install java homebrew packages
-  homebrew:
-    name: gradle
-    state: present
+    name: temurin
   tags: java
 
