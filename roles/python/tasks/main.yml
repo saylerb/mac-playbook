@@ -4,3 +4,19 @@
   homebrew:
     name: python@3
     state: present
+  tags:
+    - python
+
+- name: install pyenv
+  homebrew:
+    name: pyenv
+    state: present
+  tags:
+    - python
+
+- name: install pyenv-virtualenv
+  homebrew:
+    name: pyenv-virtualenv
+    state: present
+  tags:
+    - python
