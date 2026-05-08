@@ -72,6 +72,10 @@
     tags:
       - go
   - include_role:
+      name: rust
+    tags:
+      - rust
+  - include_role:
       name: neovim
     tags:
       - neovim

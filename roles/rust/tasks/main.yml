@@ -1,0 +1,34 @@
+---
+
+- name: check if rustup is installed
+  stat:
+    path: ~/.cargo/bin/rustup
+  register: rustup_bin
+  tags:
+    - rust
+
+- name: download rustup-init
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup-init.sh
+    mode: '0755'
+  when: not rustup_bin.stat.exists
+  tags:
+    - rust
+
+- name: install rust toolchain via rustup
+  command: /tmp/rustup-init.sh -y --no-modify-path --default-toolchain stable
+  when: not rustup_bin.stat.exists
+  tags:
+    - rust
+
+- name: install rust components
+  command: ~/.cargo/bin/rustup component add {{ item }}
+  loop:
+    - clippy
+    - rustfmt
+    - rust-analyzer
+  register: component_add
+  changed_when: "'installed' in component_add.stdout or 'installing' in component_add.stdout"
+  tags:
+    - rust
