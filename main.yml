@@ -52,7 +52,7 @@
   - include_role:
       name: javascript
     tags:
-      - nvm
+      - fnm
       - npm
   - include_role:
       name: docker

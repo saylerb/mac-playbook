@@ -1,0 +1,31 @@
+---
+
+- name: install fnm via homebrew
+  homebrew:
+    name: fnm
+    state: present
+  tags:
+    - fnm
+
+- name: install node LTS via fnm
+  shell: |
+    eval "$(fnm env --shell bash)"
+    fnm install --lts
+  args:
+    executable: /bin/bash
+  environment:
+    PATH: "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+  tags:
+    - fnm
+
+- name: update npm to latest
+  shell: |
+    eval "$(fnm env --shell bash)"
+    fnm use lts-latest
+    npm install -g npm
+  args:
+    executable: /bin/bash
+  environment:
+    PATH: "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+  tags:
+    - fnm

@@ -118,7 +118,7 @@ Profiles -> Text -> Change Font and select one Nerd Font
   * Currently doing an `ignore_error`, but need to find a way around this
   * Maybe us Plug instead of Vundle
 * Automate iTerm settings above
-* Improve nvm installation. Add nvm load in bashrc.
+* Make sure `eval "$(fnm env --use-on-cd)"` is loaded in the shell rc (dotfiles repo)
 * Install global yarn/npm packages
 * ncu (npm check update)
 * Deprecation warning for installing multiple brew packages within a loop

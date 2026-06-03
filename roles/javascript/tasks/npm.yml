@@ -1,17 +1,22 @@
 ---
 - name: get npm executable location
-  shell: . ./nvm.sh && nvm use --lts --silent && which npm
+  shell: |
+    eval "$(fnm env --shell bash)"
+    fnm use lts-latest
+    which npm
   args:
-    chdir: "~/.config/nvm"
-  register: nvm_executable
+    executable: /bin/bash
+  environment:
+    PATH: "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+  register: fnm_executable
   tags:
     - npm
 
 - name: install global packages
-  npm: 
+  npm:
     name: "{{ item }}"
     global: yes
-    executable: "{{ nvm_executable.stdout }}"
+    executable: "{{ fnm_executable.stdout_lines | last }}"
   with_items:
     - prettier
     - git-mob

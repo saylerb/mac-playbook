@@ -1,9 +1,9 @@
 ---
 
-- name: install nvm and use to install node
-  import_tasks: nvm.yml
+- name: install fnm and use to install node
+  import_tasks: fnm.yml
   tags:
-    - nvm
+    - fnm
 
 - name: install global npm packages
   import_tasks: npm.yml
