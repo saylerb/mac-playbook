@@ -131,4 +131,5 @@ Profiles -> Text -> Change Font and select one Nerd Font
 * New installation needed for oh-my-zsh?
 * Ensure vim plugins are installed to ~/.config/vim instead of ~/.vim
 * Figure out what's going on with Chef inspec
+* Remove unused plugins from vimrc
  
