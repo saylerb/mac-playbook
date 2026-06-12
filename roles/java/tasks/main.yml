@@ -1,7 +1,6 @@
 ---
 
-- name: install temurin8
+- name: install current temurin JDK
   homebrew_cask:
     name: temurin
   tags: java
-
