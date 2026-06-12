@@ -2,3 +2,7 @@ exercism_api_key: "{{ vault_exercism_api_key }}"
 ansible_python_interpreter: "{{ ansible_playbook_python }}"
 github_ssh_key_path: "{{ lookup('env', 'HOME') }}/.ssh/id_github_ed25519"
 github_ssh_key_comment: "{{ lookup('env', 'USER') }}@github"
+neovim_config_repo: "https://github.com/saylerb/kickstart.nvim.git"
+neovim_config_dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+neovim_config_version: update
+neovim_config_force: true

@@ -1,16 +1,17 @@
 ---
 - name: Ensure Neovim configuration directory exists
-  file:
-    path: "{{ lookup('env', 'HOME') }}/.config/nvim"
+  ansible.builtin.file:
+    path: "{{ neovim_config_dest }}"
     state: directory
+    mode: '0755'
   tags:
     - neovim
 
 - name: Clone Neovim configuration repository from GitHub
-  git:
-    repo: "https://github.com/saylerb/kickstart.nvim.git"
-    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
-    version: master
-    force: yes
+  ansible.builtin.git:
+    repo: "{{ neovim_config_repo }}"
+    dest: "{{ neovim_config_dest }}"
+    version: "{{ neovim_config_version }}"
+    force: "{{ neovim_config_force }}"
   tags:
     - neovim
