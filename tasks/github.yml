@@ -1,0 +1,44 @@
+---
+- name: Ensure SSH directory exists
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh"
+    state: directory
+    mode: '0700'
+  tags:
+    - github
+
+- name: Check GitHub SSH private key
+  ansible.builtin.stat:
+    path: "{{ github_ssh_key_path }}"
+  register: github_ssh_private_key
+  tags:
+    - github
+
+- name: Generate GitHub SSH key
+  ansible.builtin.command:
+    argv:
+      - ssh-keygen
+      - -t
+      - ed25519
+      - -a
+      - "100"
+      - -o
+      - -C
+      - "{{ github_ssh_key_comment }}"
+      - -N
+      - ""
+      - -f
+      - "{{ github_ssh_key_path }}"
+    creates: "{{ github_ssh_key_path }}"
+  when: not github_ssh_private_key.stat.exists
+  tags:
+    - github
+
+- name: Ensure GitHub SSH private key permissions
+  ansible.builtin.file:
+    path: "{{ github_ssh_key_path }}"
+    state: file
+    mode: '0600'
+  when: github_ssh_private_key.stat.exists or not ansible_check_mode
+  tags:
+    - github

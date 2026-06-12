@@ -1,37 +1,15 @@
 ---
 - hosts: local
   gather_facts: false
-  vars:
-    computer_name_full:
-      stdout: will be overridden below
-    computer_name_output: "{{ computer_name_full.stdout }}"
   vars_files:
     - vars.yml
     - vault.yml
 
   tasks:
-  - name: generate an shh key for github
-    command: ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_github_rsa
-    args:
-      creates: ~/.ssh/id_github_rsa
+  - name: Configure GitHub SSH key
+    include_tasks: tasks/github.yml
     tags:
       - github
-
-  - name: save computer name to variable
-    command: "scutil --get ComputerName"
-    register: computer_name_full
-    tags:
-      - github
-
-  - name: add public key to github
-    uri:
-      url: https://api.github.com/user/keys
-      headers:
-        Authorization: "token {{ github_api_key }}"
-      method: POST
-      body: "{\"title\": \"{{ computer_name_output }}\", \"key\": \"{{ lookup('file', '~/.ssh/id_github_rsa.pub') }}\"}"
-      body_format: json
-      status_code: 201
 
   - name: Include dotfiles
     include_tasks: tasks/dotfiles.yml

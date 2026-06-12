@@ -30,7 +30,7 @@
   git:
     repo: git@github.com:saylerb/dotfiles.git
     dest: ~/dotfiles
-    key_file: ~/.ssh/id_github_rsa
+    key_file: "{{ github_ssh_key_path }}"
   tags:
     - links
 
@@ -128,4 +128,3 @@
     dest: ~/Downloads/
   tags:
     - fonts
-

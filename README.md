@@ -19,18 +19,22 @@ of these prerequisites, as well as creating a virtual Python environment.
 
 ## Required additional setup
 
-To automatically generate and setup ssh keys for GitHub, the playbook needs a
-GitHub API token. Go to GitHub settings > developer settings > personal access
-tokens and generate one. When generating a new key, make sure to select the
-correct scopes. For example, if you want to programmatically add a public key to
-GitHub, check the `admin:public_key` scope. When you're done, copy the API key
-to your clipboard.  Edit encrypted vault file so the Ansible script can read it
-out:
+The playbook creates a local Ed25519 SSH key for GitHub at
+`~/.ssh/id_github_ed25519`, but it does not upload the key to GitHub or require a
+GitHub personal access token. On a fresh machine, generate the key first:
 
+```bash
+ansible-playbook main.yml -i hosts.ini --ask-vault-pass --tags="github"
 ```
-ansible-vault edit vault.yml
+
+Then add the public key to GitHub manually:
+
+```bash
+pbcopy < ~/.ssh/id_github_ed25519.pub
 ```
-When done, you can delete the existing API key in GitHub.
+
+Open GitHub settings > SSH and GPG keys > New SSH key, paste the copied public
+key, and then run the full playbook.
 
 #### Ansible vault
 
@@ -111,7 +115,6 @@ Profiles -> Text -> Change Font and select one Nerd Font
 
 ## TODO
 * Add ssh-key to ssh-agent
-* Use Uri module instead of curl for GitHub key
 * Add ability to ask for sudo password at beginning of run
 * Vim plugin installation
   * When running Vundle's plugin install, it exits with error code 1
