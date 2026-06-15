@@ -6,3 +6,5 @@ neovim_config_repo: "https://github.com/saylerb/kickstart.nvim.git"
 neovim_config_dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
 neovim_config_version: update
 neovim_config_force: true
+install_personal_casks: false
+install_vagrant_casks: false

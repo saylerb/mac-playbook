@@ -6,6 +6,35 @@
   tags:
     - homebrew
 
+- name: install personal homebrew casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - alfred
+    - discord
+    - whatsapp
+    - zoom
+  when: install_personal_casks | bool
+  tags:
+    - casks
+    - personal
+    - homebrew
+
+- name: install vagrant homebrew casks
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - virtualbox
+    - vagrant
+    - vagrant-manager
+  when: install_vagrant_casks | bool
+  tags:
+    - casks
+    - vagrant
+    - homebrew
+
 - name: install homebrew casks
   homebrew_cask:
     name: "{{ item }}"
@@ -13,10 +42,6 @@
   with_items:
     - 1password
     - 1password-cli
-    - alfred
-    #- bruno
-    - discord
-    #- dropbox
     - firefox
     - font-dejavu-sans-mono-nerd-font
     - font-fira-code
@@ -32,9 +57,7 @@
     #- temurin@17
     - visual-studio-code
     #- vmware-fusion
-    - whatsapp
     - wireshark
-    - zoom
   tags:
     - casks
     - homebrew
@@ -46,35 +69,6 @@
     - casks
     - homebrew
 
-- name: install vagrant casks
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - virtualbox
-    - vagrant
-    - vagrant-manager
-  tags:
-    - casks
-    - vagrant
-
-#- name: tap chef repository
-#  homebrew_tap:
-#    name: chef/chef
-#  tags:
-#    - casks
-#    - homebrew
-#    - inspec
-#
-#- name: install chef
-#  homebrew_cask:
-#    name: chef/chef/inspec
-#    state: present
-#  tags:
-#    - packages
-#    - homebrew
-#    - inspec
-#
 - name: install homebrew packages
   homebrew:
     name: "{{ item }}"
