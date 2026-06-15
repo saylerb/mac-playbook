@@ -90,6 +90,7 @@
     - colima
     - minikube
     - kubernetes-cli
+    - kubelogin
     - kubectx
     - krew
     - skaffold
