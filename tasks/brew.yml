@@ -89,9 +89,9 @@
     - helm
     - stern
     - 1password-cli
-    - terraform
-    - terraform-docs
-    - tflint
+    - tenv
+    #- terraform-docs
+    #- tflint # was removed from homebrew casks
     - istioctl
     - hadolint
     - yamllint
