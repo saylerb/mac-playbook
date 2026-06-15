@@ -69,6 +69,13 @@
     - casks
     - homebrew
 
+- name: tap hashicorp repository
+  homebrew_tap:
+    name: hashicorp/tap
+  tags:
+    - packages
+    - homebrew
+
 - name: install homebrew packages
   homebrew:
     name: "{{ item }}"
@@ -90,6 +97,7 @@
     - stern
     - 1password-cli
     - tenv
+    - hashicorp/tap/vault
     #- terraform-docs
     #- tflint # was removed from homebrew casks
     - istioctl
