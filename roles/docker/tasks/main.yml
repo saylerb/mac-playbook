@@ -7,6 +7,13 @@
   tags:
     - docker
 
+- name: install docker-buildx
+  homebrew:
+    name: docker-buildx
+    state: present
+  tags:
+    - docker
+
 - name: install docker-compose
   homebrew:
     name: docker-compose
